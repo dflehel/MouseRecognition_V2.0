@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="365.0" prefWidth="554.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScreenContolers.MouseDataTestingScreenController">
+    <stylesheets>
+        <URL value="@mousedatatestingscreen.css" />
+    </stylesheets>
+   <children>
+      <Pane layoutX="27.0" layoutY="26.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox layoutX="263.0" layoutY="36.0">
+               <children>
+                  <ImageView fx:id="im2" fitHeight="25.0" fitWidth="25.0" layoutX="238.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label text="inactive">
+                     <padding>
+                        <Insets top="2.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+            <ProgressBar fx:id="progressbar" layoutX="60.0" layoutY="99.0" prefHeight="18.0" prefWidth="471.0" progress="0.0" />
+            <ListView fx:id="listview" layoutX="58.0" layoutY="156.0" prefHeight="184.0" prefWidth="471.0" />
+            <Label layoutX="241.0" layoutY="61.0" text="Felismeres">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="scorrelabel" layoutX="281.0" layoutY="117.0" text="0%">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Button layoutX="38.0" layoutY="15.0" mnemonicParsing="false" onAction="#pressStartButton" text="Start" />
+            <Button layoutX="509.0" layoutY="15.0" mnemonicParsing="false" onAction="#pressStopButton" text="Stop" />
+            <Group>
+               <children>
+                  <RadioButton fx:id="fileradiobutton" layoutX="342.0" layoutY="18.0" mnemonicParsing="false" text="Egy arff filebol induljon ki" />
+                  <RadioButton fx:id="modelradiobutton" layoutX="90.0" layoutY="18.0" mnemonicParsing="false" text="Toltse be az alkalmazas a modelt" />
+               </children>
+            </Group>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

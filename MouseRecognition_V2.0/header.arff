@@ -1,0 +1,28 @@
+@relation javasanmegszurt
+
+@attribute f1 numeric
+@attribute f2 numeric
+@attribute f3 numeric
+@attribute f4 numeric
+@attribute f5 numeric
+@attribute f6 numeric
+@attribute f7 numeric
+@attribute f8 numeric
+@attribute f9 numeric
+@attribute f10 numeric
+@attribute f11 numeric
+@attribute f12 numeric
+@attribute f13 numeric
+@attribute f14 numeric
+@attribute f15 numeric
+@attribute f16 numeric
+@attribute f17 numeric
+@attribute f18 numeric
+@attribute f19 numeric
+@attribute f20 numeric
+@attribute f21 numeric
+@attribute f22 numeric
+@attribute f23 numeric
+@attribute userid {0,1}
+
+@data

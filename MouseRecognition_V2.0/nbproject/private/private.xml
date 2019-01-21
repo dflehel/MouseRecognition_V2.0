@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/Screen/MouseDataTestingScreen.fxml</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/Settings/GlobalSettings.java</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/Screen/SignatureDataCollectingScreen.fxml</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/ScreenContolers/SignatureUpdateScreenController.java</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/ScreenContolers/MainScreenController.java</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/Screen/UpdateModelMouseData.fxml</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/signaturerecognation/a.java</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/Screen/MouseDataCollertorScreen.fxml</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/signaturerecognation/SignatureClassifier.java</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/mouserecognition/MouseRecognition.java</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/Screen/SignatureUpdateScreen.fxml</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/ScreenContolers/MouseDataUserModelBulderScreenController.java</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/ScreenContolers/SignatureMakeModelScreenController.java</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/UserModelBuilder/UserModelBuilder.java</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/signaturerecognation/SignatureRecognation.java</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/Screen/SignatureMakeModelScreen.fxml</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/Screen/MainScreen.fxml</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/ScreenContolers/MouseDataTestingScreenController.java</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/ScreenContolers/UpdateModelMouseDataController.java</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/mouserecognition/Display.java</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/signaturerecognation/User_Signature_Model_Builder.java</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/ScreenContolers/SignatureRecognitionTestScreenController.java</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/mouserecognition/DFLRandomForestClassifier.java</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/ScreenContolers/SignatureDataCollectingScreenController.java</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/Screen/SignatureRecognitionTestScreen.fxml</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/Main/Starter.java</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/Screen/MouseDataUserModelBulderScreen.fxml</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/Screen/signatureupdatescreen.css</file>
+            <file>file:/C:/Users/Denes/Documents/MouseRecognition_V2.0/src/mousedatacollector/MouseDataCollertor.java</file>
+        </group>
+    </open-files>
+</project-private>

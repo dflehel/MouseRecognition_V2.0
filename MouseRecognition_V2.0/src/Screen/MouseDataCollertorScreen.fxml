@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="436.0" prefWidth="601.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScreenContolers.MouseDataCollertorScreenController">
+    <stylesheets>
+        <URL value="@mousedatacollertorscreen.css" />
+    </stylesheets>
+   <children>
+      <VBox layoutX="23.0" layoutY="17.0" prefHeight="400.0" prefWidth="600.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane prefHeight="91.0" prefWidth="601.0">
+               <children>
+                  <Group>
+                     <children>
+                        <HBox layoutX="261.0" layoutY="49.0">
+                           <children>
+                              <ImageView fx:id="im2" fitHeight="25.0" fitWidth="25.0" layoutX="238.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label text="inactive">
+                                 <padding>
+                                    <Insets top="2.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Group layoutX="129.0">
+                           <children>
+                              <Label layoutX="61.0" layoutY="14.0" text="jelen pillanatben 0 szeszio van rogzitve " />
+                              <Button layoutX="270.0" layoutY="14.0" mnemonicParsing="false" onAction="#pressStopButton" text="Stop" />
+                              <Button layoutX="20.0" layoutY="14.0" mnemonicParsing="false" onAction="#pressStartButton" prefHeight="25.0" prefWidth="41.0" text="Start" />
+                           </children>
+                        </Group>
+                     </children>
+                  </Group>
+               </children>
+            </Pane>
+            <ListView fx:id="listfiles" layoutX="23.0" layoutY="60.0" prefHeight="368.0" prefWidth="601.0" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

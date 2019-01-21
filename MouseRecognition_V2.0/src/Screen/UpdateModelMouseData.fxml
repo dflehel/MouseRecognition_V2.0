@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="369.0" prefWidth="488.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScreenContolers.UpdateModelMouseDataController">
+    <stylesheets>
+        <URL value="@updatemodelmousedata.css" />
+    </stylesheets>
+   <children>
+      <Pane layoutX="22.0" layoutY="37.0" prefHeight="370.0" prefWidth="579.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <CheckBox fx:id="isupdating" layoutX="26.0" layoutY="38.0" mnemonicParsing="false" onAction="#bospressed" text="Szeretne hogy tanuljon vegig az alkalmazas?">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </CheckBox>
+            <LineChart fx:id="chart" layoutX="25.0" layoutY="102.0" prefHeight="246.0" prefWidth="439.0" title="Felismeres">
+              <xAxis>
+                <CategoryAxis label="Number off action" side="BOTTOM" tickLength="1.0" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis label="Probability" side="LEFT" tickLength="1.0" />
+              </yAxis>
+            </LineChart>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
