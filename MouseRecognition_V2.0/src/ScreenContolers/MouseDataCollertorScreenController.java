@@ -5,6 +5,7 @@
  */
 package ScreenContolers;
 
+import Settings.DataCollectorSettings;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,15 +16,17 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import mousedatacollector.MouseDataCollertor;
+import mousedatacollector.MouseDataCollector;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 
@@ -38,70 +41,96 @@ public class MouseDataCollertorScreenController implements Initializable {
     private ImageView im2;
     @FXML
     private ListView listfiles;
-    
-    private MouseDataCollertor collector;
 
-    
-     @FXML
-    public void pressStartButton(ActionEvent event)  {               
-            Image image = new Image("Pictures/activepicture.png");
-            this.im2.setImage(image);
-            DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd__HH_mm_ss");
+    private MouseDataCollector collector;
+    @FXML
+    private Label actionsnum;
+
+    @FXML
+    private Label onoff;
+
+    private Thread dataCollecting;
+
+    private DataCollectorSettings d = new DataCollectorSettings();
+
+    @FXML
+    public void pressStartButton(ActionEvent event) {
+        Image image = new Image("Pictures/activepicture.png");
+        this.im2.setImage(image);
+        this.onoff.setText("Active");
+        this.dataCollecting = new Thread("DataCollector") {
+            public void run() {
+                DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd__HH_mm_ss");
                 Date date = new Date();
-               
+
                 String s = dateFormat.format(date);
-            try{
-                FileWriter files = new FileWriter("Collected Data/"+s+".CSV");
-                files.append("client timestamp,button,state,x,y\n");
-            
-               try {
-                GlobalScreen.registerNativeHook();
-                Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
-                logger.setLevel(Level.OFF);
 
-                // Don't forget to disable the parent handlers.
-                logger.setUseParentHandlers(false);
-                }
-                catch (NativeHookException ex) {
-                System.err.println("There was a problem registering the native hook.");
-                System.err.println(ex.getMessage());
-                
-                System.exit(1);
-                }
-                
-                // Construct the example object.
-                this.collector = new MouseDataCollertor();
-                this.collector.setWrite(files);
-                // Add the appropriate listeners.
-                GlobalScreen.addNativeMouseListener( this.collector);
-                GlobalScreen.addNativeMouseMotionListener( this.collector);
-                GlobalScreen.addNativeMouseWheelListener( this.collector);
-                this.listfiles();
-                }
+                try {
+                    FileWriter files = new FileWriter("Collected Data/New Data/" + s + ".CSV");
+                    files.append("client timestamp,button,state,x,y\n");
 
-        catch (IOException ex) {
-                Logger.getLogger(MouseDataCollertor.class.getName()).log(Level.SEVERE, null, ex);
-                } 
+                    try {
+                        GlobalScreen.registerNativeHook();
+                        Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
+                        logger.setLevel(Level.OFF);
+
+                        // Don't forget to disable the parent handlers.
+                        logger.setUseParentHandlers(false);
+                    } catch (NativeHookException ex) {
+                        System.err.println("There was a problem registering the native hook.");
+                        System.err.println(ex.getMessage());
+
+                        System.exit(1);
+                    }
+
+                    // Construct the example object.
+                    collector = new MouseDataCollector();
+                    collector.setWrite(files);
+                    collector.setActionsnum(actionsnum);
+                    // Add the appropriate listeners.
+                    GlobalScreen.addNativeMouseListener(collector);
+                    GlobalScreen.addNativeMouseMotionListener(collector);
+                    GlobalScreen.addNativeMouseWheelListener(collector);
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            // if you change the UI, do it here !
+                            listfiles();
+                        }
+                    });
+                } catch (Exception e) {
+                    Logger.getLogger(MouseDataCollector.class.getName()).log(Level.SEVERE, null, e);
+                }
+            }
+        };
+        this.dataCollecting.start();
+
     }
 
-     @FXML
-    public void pressStopButton(ActionEvent event)  {               
-            Image image = new Image("Pictures/inactivepicture.png");
-            this.im2.setImage(image);
-            this.collector.stop();
+    @FXML
+    public void pressStopButton(ActionEvent event) {
+        Image image = new Image("Pictures/inactivepicture.png");
+        this.im2.setImage(image);
+        GlobalScreen.removeNativeMouseListener(collector);
+        GlobalScreen.removeNativeMouseMotionListener(collector);
+        GlobalScreen.removeNativeMouseWheelListener(collector);
+        this.collector.stop();
+        this.dataCollecting.stop();
+        DataCollectorSettings.savedata();
+        this.onoff.setText("Inactive");
     }
-    
-    
-    private void listfiles(){
-         File folder = new File("Collected Data");
+
+    private void listfiles() {
+        File folder = new File("Collected Data/New Data");
         File[] listOfFiles = folder.listFiles();
         this.listfiles.setEditable(false);
         this.listfiles.getItems().clear();
         for (int i = 0; i < listOfFiles.length; i++) {
-           this.listfiles.getItems().add(listOfFiles[i]);
+            this.listfiles.getItems().add(listOfFiles[i]);
         }
+        DataCollectorSettings.loaddata();
     }
-    
+
     /**
      * Initializes the controller class.
      */
@@ -110,6 +139,7 @@ public class MouseDataCollertorScreenController implements Initializable {
         Image image = new Image("Pictures/inactivepicture.png");
         this.im2.setImage(image);
         this.listfiles();
+        this.actionsnum.setText(DataCollectorSettings.numberofactions + " / " + DataCollectorSettings.minimumofmouseactions);
         // TODO
 
     }

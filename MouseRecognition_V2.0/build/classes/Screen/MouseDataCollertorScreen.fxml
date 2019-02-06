@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
@@ -9,40 +10,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="436.0" prefWidth="601.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScreenContolers.MouseDataCollertorScreenController">
+<AnchorPane id="mdc" fx:id="mdc" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="395.0" prefWidth="633.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScreenContolers.MouseDataCollertorScreenController">
     <stylesheets>
         <URL value="@mousedatacollertorscreen.css" />
     </stylesheets>
    <children>
-      <VBox layoutX="23.0" layoutY="17.0" prefHeight="400.0" prefWidth="600.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Pane prefHeight="91.0" prefWidth="601.0">
-               <children>
-                  <Group>
-                     <children>
-                        <HBox layoutX="261.0" layoutY="49.0">
-                           <children>
-                              <ImageView fx:id="im2" fitHeight="25.0" fitWidth="25.0" layoutX="238.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label text="inactive">
-                                 <padding>
-                                    <Insets top="2.0" />
-                                 </padding>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <Group layoutX="129.0">
-                           <children>
-                              <Label layoutX="61.0" layoutY="14.0" text="jelen pillanatben 0 szeszio van rogzitve " />
-                              <Button layoutX="270.0" layoutY="14.0" mnemonicParsing="false" onAction="#pressStopButton" text="Stop" />
-                              <Button layoutX="20.0" layoutY="14.0" mnemonicParsing="false" onAction="#pressStartButton" prefHeight="25.0" prefWidth="41.0" text="Start" />
-                           </children>
-                        </Group>
-                     </children>
-                  </Group>
-               </children>
-            </Pane>
-            <ListView fx:id="listfiles" layoutX="23.0" layoutY="60.0" prefHeight="368.0" prefWidth="601.0" />
-         </children>
-      </VBox>
+      <ListView fx:id="listfiles" layoutY="48.0" prefHeight="368.0" prefWidth="601.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="120.0" />
+      <Label fx:id="onoff" layoutX="333.0" layoutY="77.0" text="inactive" AnchorPane.bottomAnchor="289.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="239.0" AnchorPane.topAnchor="77.0">
+         <padding>
+            <Insets top="2.0" />
+         </padding>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="im2" fitHeight="25.0" fitWidth="25.0" layoutX="292.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="291.0" AnchorPane.leftAnchor="292.0" AnchorPane.rightAnchor="316.0" AnchorPane.topAnchor="79.0" />
+      <Label fx:id="actionsnum" alignment="CENTER" layoutX="188.0" layoutY="14.0" text="0/0" AnchorPane.bottomAnchor="332.0" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="14.0" />
+      <Button layoutX="463.0" layoutY="20.0" mnemonicParsing="false" onAction="#pressStopButton" prefHeight="25.0" prefWidth="41.0" text="Stop" AnchorPane.bottomAnchor="338.0" AnchorPane.leftAnchor="501.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0" />
+      <Button layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#pressStartButton" prefHeight="25.0" prefWidth="41.0" text="Start" AnchorPane.bottomAnchor="338.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="501.0" AnchorPane.topAnchor="20.0" />
    </children>
 </AnchorPane>

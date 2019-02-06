@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
@@ -10,44 +11,40 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="365.0" prefWidth="554.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScreenContolers.MouseDataTestingScreenController">
+<AnchorPane id="mdt" fx:id="mdt" prefHeight="395.0" prefWidth="633.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScreenContolers.MouseDataTestingScreenController">
     <stylesheets>
         <URL value="@mousedatatestingscreen.css" />
     </stylesheets>
    <children>
-      <Pane layoutX="27.0" layoutY="26.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <HBox layoutX="263.0" layoutY="36.0">
-               <children>
-                  <ImageView fx:id="im2" fitHeight="25.0" fitWidth="25.0" layoutX="238.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label text="inactive">
-                     <padding>
-                        <Insets top="2.0" />
-                     </padding>
-                  </Label>
-               </children>
-            </HBox>
-            <ProgressBar fx:id="progressbar" layoutX="60.0" layoutY="99.0" prefHeight="18.0" prefWidth="471.0" progress="0.0" />
-            <ListView fx:id="listview" layoutX="58.0" layoutY="156.0" prefHeight="184.0" prefWidth="471.0" />
-            <Label layoutX="241.0" layoutY="61.0" text="Felismeres">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label fx:id="scorrelabel" layoutX="281.0" layoutY="117.0" text="0%">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-            <Button layoutX="38.0" layoutY="15.0" mnemonicParsing="false" onAction="#pressStartButton" text="Start" />
-            <Button layoutX="509.0" layoutY="15.0" mnemonicParsing="false" onAction="#pressStopButton" text="Stop" />
-            <Group>
-               <children>
-                  <RadioButton fx:id="fileradiobutton" layoutX="342.0" layoutY="18.0" mnemonicParsing="false" text="Egy arff filebol induljon ki" />
-                  <RadioButton fx:id="modelradiobutton" layoutX="90.0" layoutY="18.0" mnemonicParsing="false" text="Toltse be az alkalmazas a modelt" />
-               </children>
-            </Group>
-         </children>
-      </Pane>
+      <LineChart fx:id="chart" alternativeRowFillVisible="false" createSymbols="false" layoutX="4.0" layoutY="138.0" legendVisible="false" prefHeight="247.0" prefWidth="622.0" title="Felismeres" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="138.0">
+         <xAxis>
+            <CategoryAxis label="Number off action" side="BOTTOM" tickLength="1.0" tickMarkVisible="false" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis label="Probability" side="LEFT" tickLength="1.0" />
+         </yAxis>
+      </LineChart>
+      <Button layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#pressStartButton" prefHeight="45.0" prefWidth="93.0" text="Start" AnchorPane.bottomAnchor="330.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="530.0" AnchorPane.topAnchor="20.0" />
+      <Label fx:id="onoff" layoutX="311.0" layoutY="12.0" text="inactive">
+         <padding>
+            <Insets top="2.0" />
+         </padding>
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="im2" fitHeight="25.0" fitWidth="25.0" layoutX="269.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="283.0" layoutY="56.0" prefHeight="25.0" prefWidth="68.0" text="Felismeres" wrapText="true" AnchorPane.bottomAnchor="314.0" AnchorPane.leftAnchor="283.0" AnchorPane.rightAnchor="282.0" AnchorPane.topAnchor="56.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="scorrelabel" alignment="CENTER" layoutX="296.0" layoutY="111.0" text="0%" wrapText="true" AnchorPane.bottomAnchor="252.0" AnchorPane.topAnchor="111.0">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button layoutX="578.0" layoutY="15.0" mnemonicParsing="false" onAction="#pressStopButton" text="Stop" AnchorPane.bottomAnchor="330.0" AnchorPane.leftAnchor="530.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0" />
+      <ProgressBar fx:id="progressbar" layoutX="60.0" layoutY="81.0" prefHeight="18.0" prefWidth="471.0" progress="0.0" AnchorPane.bottomAnchor="296.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="81.0" />
    </children>
 </AnchorPane>

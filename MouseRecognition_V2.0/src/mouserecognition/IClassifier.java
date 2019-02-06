@@ -12,8 +12,9 @@ import java.util.Queue;
  * @author Denes
  */
 public interface IClassifier {
-    
-     public void classify();
-     public void  classify(Queue<IFeature> moves);
-    
+
+    public void classify();
+
+    public void classify(Queue<IFeature> moves);
+
 }

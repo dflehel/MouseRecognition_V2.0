@@ -5,6 +5,7 @@
  */
 package ScreenContolers;
 
+import Settings.GlobalSettings;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
@@ -20,6 +21,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.LineChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
@@ -27,7 +29,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import mousedatacollector.MouseDataCollertor;
+import mousedatacollector.MouseDataCollector;
 import mouserecognition.DFLRandomForestClassifier;
 import mouserecognition.DataCollector;
 import mouserecognition.Display;
@@ -36,7 +38,7 @@ import mouserecognition.IClassifier;
 import mouserecognition.IEvent;
 import mouserecognition.IFeature;
 import mouserecognition.MouseRecognition;
-import mouserecognition.Settings;
+import Settings.ClassifierSettings;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 
@@ -47,55 +49,48 @@ import org.jnativehook.NativeHookException;
  */
 public class MouseDataTestingScreenController implements Initializable {
 
-    private ToggleGroup group;
-    @FXML
-    private RadioButton modelradiobutton;
     @FXML
     private ImageView im2;
-    @FXML
-    private RadioButton fileradiobutton;
     private Thread featureExtractionThread;
     private Thread dataCollectorThread;
 
     @FXML
+    private Label onoff;
+    @FXML
     private ProgressBar progressbar;
-    
+
     @FXML
     private ListView listview;
-    
+
     @FXML
     private Label scorrelabel;
-    
+
+    @FXML
+    private LineChart chart;
+
     /**
      * Initializes the controller class.
      */
-    private void creatradiogroup() {
-        group = new ToggleGroup();
-        this.modelradiobutton.setToggleGroup(group);
-        this.fileradiobutton.setToggleGroup(group);
-        this.modelradiobutton.setSelected(true);
-
-    }
-
     @FXML
     public void pressStartButton(ActionEvent event) {
         Image image = new Image("Pictures/activepicture.png");
+        this.onoff.setText("Active");
         this.im2.setImage(image);
-         DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd__HH_mm_ss");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd__HH_mm_ss");
         Date date = new Date();
 
         String ss = dateFormat.format(date);
         Queue<ArrayList<IEvent>> events = new LinkedList<ArrayList<IEvent>>();
         FileWriter fileWriter;
         Display d;
-    //    d = new Display();
-    //    d.setVisible(true);
+        //    d = new Display();
+        //    d.setVisible(true);
         try {
             fileWriter = new FileWriter("kimenet_" + ss + ".csv");
-            fileWriter.append(Settings.FILE_HEADER.toString());
+            fileWriter.append(ClassifierSettings.FILE_HEADER.toString());
             Queue<IFeature> moves = new LinkedList<IFeature>();
-            
-          /*  Thread classificationThread = new Thread("Classifier") {
+
+            /*  Thread classificationThread = new Thread("Classifier") {
                 public void run() {
                     System.out.println("run by: " + getName());
                     IClassifier classifier = new DFLRandomForestClassifier(moves, fileWriter, d);
@@ -105,7 +100,6 @@ public class MouseDataTestingScreenController implements Initializable {
                     classifier.classify();
                 }
             };*/
-
             this.featureExtractionThread = new Thread("Feature extractor") {
                 public void run() {
                     System.out.println("run by: " + getName());
@@ -113,15 +107,9 @@ public class MouseDataTestingScreenController implements Initializable {
                     extraction.setEventslist(events);
                     extraction.setMoves(moves);
                     IClassifier classifier = null;
-                    if(fileradiobutton.isSelected()){
-                            classifier = new DFLRandomForestClassifier(moves, fileWriter,progressbar,scorrelabel,listview,0);
-                    }
-                    else{
-                        classifier = new DFLRandomForestClassifier(moves, fileWriter,progressbar,scorrelabel,listview,1);
-                    }
-                   // classifier.setFile(fileWriter);
-                  //  classifier.setMoves(moves);
-                  //  classifier.setDisplay(d);
+
+                    classifier = new DFLRandomForestClassifier(moves, fileWriter, progressbar, scorrelabel, 0);
+
                     extraction.setClassifier(classifier);
                     extraction.featuresextraction();
                 }
@@ -151,12 +139,12 @@ public class MouseDataTestingScreenController implements Initializable {
                     System.out.println("run by: " + getName());
                 }
             };
-        //    classificationThread.start();
-         this.dataCollectorThread.start();
-          this.featureExtractionThread.start();
-        //    classificationThread.join();
-   
-        }  catch (IOException ex) {
+            //    classificationThread.start();
+            this.dataCollectorThread.start();
+            this.featureExtractionThread.start();
+            //    classificationThread.join();
+
+        } catch (IOException ex) {
             Logger.getLogger(MouseRecognition.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -165,6 +153,7 @@ public class MouseDataTestingScreenController implements Initializable {
     public void pressStopButton(ActionEvent event) {
         Image image = new Image("Pictures/inactivepicture.png");
         this.im2.setImage(image);
+        this.onoff.setText("Inactive");
         this.dataCollectorThread.stop();
         this.featureExtractionThread.stop();
     }
@@ -172,7 +161,8 @@ public class MouseDataTestingScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        this.creatradiogroup();
+        this.chart.getData().add(GlobalSettings.series);
+
     }
 
 }

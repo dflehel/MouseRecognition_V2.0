@@ -1,5 +1,6 @@
 package mouserecognition;
 
+import Settings.ClassifierSettings;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 import org.jnativehook.mouse.NativeMouseEvent;
@@ -80,7 +81,7 @@ public class DataCollector implements NativeMouseInputListener, NativeMouseWheel
         event.setActiontype("Pressed");
         this.eventlist.add(event);
 
-        if (this.eventlist.size() > Settings.NUM_EVENTS) {
+        if (this.eventlist.size() > ClassifierSettings.NUM_EVENTS) {
             this.mouseActions.add(this.eventlist);
             synchronized (this.mouseActions) {
                 this.mouseActions.notify();
@@ -108,7 +109,7 @@ public class DataCollector implements NativeMouseInputListener, NativeMouseWheel
         event.setActiontype("Released");
         this.eventlist.add(event);
 
-        if (this.eventlist.size() > Settings.NUM_EVENTS) {
+        if (this.eventlist.size() > ClassifierSettings.NUM_EVENTS) {
             this.mouseActions.add(this.eventlist);
             synchronized (this.mouseActions) {
                 this.mouseActions.notify();
@@ -129,8 +130,8 @@ public class DataCollector implements NativeMouseInputListener, NativeMouseWheel
         event.setButtonype("NoButton");
         event.setActiontype("Moved");
         //***
-        if (this.eventlist.size() > Settings.NUM_EVENTS) {
-            if (this.eventlist.get(this.eventlist.size() - 1).getTime() - event.getTime() > Settings.TIME_THRESHOLD) {
+        if (this.eventlist.size() > ClassifierSettings.NUM_EVENTS) {
+            if (this.eventlist.get(this.eventlist.size() - 1).getTime() - event.getTime() > ClassifierSettings.TIME_THRESHOLD) {
                 if (this.mouseActions.isEmpty()) {
                     this.mouseActions.add(this.eventlist);
                     synchronized (this.mouseActions) {

@@ -5,6 +5,7 @@
  */
 package mouserecognition;
 
+import Settings.ClassifierSettings;
 import Settings.GlobalSettings;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -26,9 +27,9 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
-import static mouserecognition.Settings.LOAD_MODEL;
-import static mouserecognition.Settings.NUM_ACTIONS;
-import static mouserecognition.Settings.NUM_TO_CLASSIFY;
+import static Settings.ClassifierSettings.LOAD_MODEL;
+import static Settings.ClassifierSettings.NUM_ACTIONS;
+import static Settings.ClassifierSettings.NUM_TO_CLASSIFY;
 import weka.classifiers.UpdateableClassifier;
 import weka.core.Instances;
 import weka.core.Attribute;
@@ -62,12 +63,11 @@ public class DFLRandomForestClassifier implements IClassifier {
         this.display = display;
     }
 
-    public DFLRandomForestClassifier(Queue<IFeature> moves, FileWriter file, ProgressBar bar, Label lab, ListView list, int which) {
+    public DFLRandomForestClassifier(Queue<IFeature> moves, FileWriter file, ProgressBar bar, Label lab, int which) {
         this.file = file;
         this.moves = moves;
         this.bar = bar;
         this.lab = lab;
-        this.list = list;
         if (which == 0) {
             BufferedReader datafile = null;
             try {
@@ -103,11 +103,11 @@ public class DFLRandomForestClassifier implements IClassifier {
         }
         try {
             String f = "f";
-            this.instances = new Instances(new BufferedReader(new FileReader("header.arff")));
+            this.instances = new Instances(new BufferedReader(new FileReader("Headers/lehelfh.arff")));
             this.instances.setClassIndex(this.instances.numAttributes() - 1);
-            this.toclassify = new Instances(new BufferedReader(new FileReader("header.arff")));
+            this.toclassify = new Instances(new BufferedReader(new FileReader("Headers/lehelfh.arff")));
             this.toclassify.setClassIndex(this.instances.numAttributes() - 1);
-            for (Integer i = 1; i < Settings.DFL_NUM_FEATURES; ++i) {
+            for (Integer i = 1; i < ClassifierSettings.DFL_NUM_FEATURES; ++i) {
                 this.att.add(new Attribute(new String(f + i.toString() + " numeric")));
             }
         } catch (FileNotFoundException ex) {
@@ -160,7 +160,7 @@ public class DFLRandomForestClassifier implements IClassifier {
             this.instances.setClassIndex(this.instances.numAttributes() - 1);
             this.toclassify = new Instances(new BufferedReader(new FileReader("header.arff")));
             this.toclassify.setClassIndex(this.instances.numAttributes() - 1);
-            for (Integer i = 1; i < Settings.DFL_NUM_FEATURES; ++i) {
+            for (Integer i = 1; i < ClassifierSettings.DFL_NUM_FEATURES; ++i) {
                 this.att.add(new Attribute(new String(f + i.toString() + " numeric")));
             }
         } catch (FileNotFoundException ex) {
@@ -227,20 +227,20 @@ public class DFLRandomForestClassifier implements IClassifier {
                     }
                 }
                 TeacherFeature tf = null;
-                if (Settings.WHICH_FEATURES == 1) {
+                if (ClassifierSettings.WHICH_FEATURES == 1) {
                     tf = (TeacherFeature) this.moves.element();
                 }
 
                 try {
                     double res = (movesProbs[1] / SIZE);
-                    if (probabilities.size() < Settings.NUM_TO_CLASSIFY) {
+                    if (probabilities.size() < ClassifierSettings.NUM_TO_CLASSIFY) {
                         probabilities.add(res);
                     } else {
                         probabilities.poll();
                         probabilities.add(res);
                     }
                     double mean = computeMean(probabilities);
-                    if (Settings.WHICH_FEATURES == 1) {
+                    if (ClassifierSettings.WHICH_FEATURES == 1) {
                         this.file.append(tf.getAction_type() + ", " + res + "\n");
                     } else {
                         this.file.append(res + "\n");
@@ -284,7 +284,7 @@ public class DFLRandomForestClassifier implements IClassifier {
             }
             data.setClassIndex(data.numAttributes() - 1);
             this.randomforest = new RandomForest();
-            this.randomforest.setNumFeatures(Settings.DFL_NUM_FEATURES);
+            this.randomforest.setNumFeatures(ClassifierSettings.DFL_NUM_FEATURES);
             this.randomforest.setMaxDepth(10);
             try {
                 this.randomforest.buildClassifier(data);
@@ -310,7 +310,7 @@ public class DFLRandomForestClassifier implements IClassifier {
             this.instances.setClassIndex(this.instances.numAttributes() - 1);
             this.toclassify = new Instances(new BufferedReader(new FileReader("header.arff")));
             this.toclassify.setClassIndex(this.instances.numAttributes() - 1);
-            for (Integer i = 1; i < Settings.DFL_NUM_FEATURES; ++i) {
+            for (Integer i = 1; i < ClassifierSettings.DFL_NUM_FEATURES; ++i) {
                 this.att.add(new Attribute(new String(f + i.toString() + " numeric")));
             }
         } catch (FileNotFoundException ex) {
@@ -352,16 +352,16 @@ public class DFLRandomForestClassifier implements IClassifier {
             instance.setDataset(this.instances);
             this.instances.add(instance);
             System.out.println(f.toString());
-          //  TeacherFeature tf = (TeacherFeature) f;
+            //  TeacherFeature tf = (TeacherFeature) f;
 
-          //  printEventData(tf);
+            //  printEventData(tf);
             try {
                 double[] probs = this.randomforest.distributionForInstance(instance);
                 movesProbs[1] += probs[1];
-                if (GlobalSettings.updating){
-                   
-                           this.randomforest.buildClassifier(this.instances);
-                           this.instances.delete();
+                if (GlobalSettings.updating) {
+
+                    this.randomforest.buildClassifier(this.instances);
+                    this.instances.delete();
                 }
                 System.out.println((counter) + ". Time: " + Calendar.getInstance().getTime() + "\tProbability: " + probs[1]);
             } catch (Exception ex) {
@@ -369,36 +369,34 @@ public class DFLRandomForestClassifier implements IClassifier {
             }
         }
         TeacherFeature tf = null;
-        if (Settings.WHICH_FEATURES == 1) {
+        if (ClassifierSettings.WHICH_FEATURES == 1) {
             tf = (TeacherFeature) this.moves.element();
         }
 
         try {
             double res = (movesProbs[1] / SIZE);
-            if (probabilities.size() < Settings.NUM_TO_CLASSIFY) {
+            if (probabilities.size() < ClassifierSettings.NUM_TO_CLASSIFY) {
                 probabilities.add(res);
             } else {
                 probabilities.poll();
                 probabilities.add(res);
             }
             double mean = computeMean(probabilities);
-            if (Settings.WHICH_FEATURES == 1) {
+            if (ClassifierSettings.WHICH_FEATURES == 1) {
                 this.file.append(tf.getAction_type() + ", " + res + "\n");
             } else {
                 this.file.append(res + "\n");
             }
             Integer i = new Integer((int) (mean * 100));
-            //this.display.setscore((counter) + ". Time: " + Calendar.getInstance().getTime() + "\tProbability: " + String.format("%.4f", mean), i);
-            GlobalSettings.series.getData().add(new XYChart.Data<>(counter+"", i));
-            
+            //this.display.setscore((counter) + ". Time: " + Calendar.getInstance().getTime() + "\tProbability: " + String.format("%.4f", mean), i)
+
             Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
                     // if you change the UI, do it here !
                     bar.setProgress(mean);
                     lab.setText(i + "%");
-                    list.getItems().add((counter) + ". Time: " + Calendar.getInstance().getTime() + "\tProbability: " + String.format("%.4f", mean) + "     " + i);
-
+                    GlobalSettings.series.getData().add(new XYChart.Data<>(counter + "", i));
                 }
             });
             this.file.flush();

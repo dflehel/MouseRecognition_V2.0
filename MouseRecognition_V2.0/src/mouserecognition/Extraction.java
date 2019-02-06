@@ -5,12 +5,13 @@
  */
 package mouserecognition;
 
+import Settings.ClassifierSettings;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static mouserecognition.Settings.NUM_ACTIONS;
+import static Settings.ClassifierSettings.NUM_ACTIONS;
 
 /**
  *
@@ -37,12 +38,6 @@ public class Extraction {
         this.classifier = classifier;
     }
 
-
-    
-    
-    
-    
-
     public Queue<ArrayList<IEvent>> getEventslist() {
         return eventslist;
     }
@@ -50,7 +45,6 @@ public class Extraction {
     public void setEventslist(Queue<ArrayList<IEvent>> eventslist) {
         this.eventslist = eventslist;
     }
-
 
     public Queue<IFeature> getMoves() {
         return moves;
@@ -76,8 +70,8 @@ public class Extraction {
                 }
                 //A csere eseten a megfelelo osztalyt kell peldanyositani
                 IFeature feature = null;
-                if (Settings.WHICH_FEATURES == 0) {
-                    feature = new LehellFeature();
+                if (ClassifierSettings.WHICH_FEATURES == 0) {
+                    feature = new LehelFeature();
                 } else {
 
                     feature = new TeacherFeature();
@@ -95,7 +89,7 @@ public class Extraction {
                         this.moves.notify();
                     }
                 }*/
-                
+
             }
         }
 

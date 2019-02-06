@@ -5,6 +5,7 @@
  */
 package UserModelBuilder;
 
+import Settings.UserModelBuilderSettings;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -32,31 +33,40 @@ import weka.core.Instances;
  */
 public class UserModelBuilder {
 
-    public UserModelBuilder(File file, ProgressIndicator ind, Label lab,int which) {
+    public UserModelBuilder(File negativafile, ProgressIndicator ind, Label lab, int which) {
         try {
-            BufferedReader datafile = null;
+            BufferedReader negativedatafile = null;
             try {
                 //datafile = new BufferedReader(new FileReader("chaoshencont_39feat_PC_DD_1000.arff"));
                 //datafile = new BufferedReader(new FileReader("javasanmegszurt1.arff"));
-                datafile = new BufferedReader(new FileReader(file));
+                negativedatafile = new BufferedReader(new FileReader(negativafile));
+
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(ChaoShenContinuous_Idenification.class.getName()).log(Level.SEVERE, null, ex);
             }
             Instances data = null;
+            Instances positivedata = null;
             try {
-                data = new Instances(datafile);
+                data = new Instances(negativedatafile);
+
             } catch (IOException ex) {
                 Logger.getLogger(ChaoShenContinuous_Idenification.class.getName()).log(Level.SEVERE, null, ex);
             }
+
+            FeatureExtraction extracion = new FeatureExtraction();
+            extracion.setData(data);
+            extracion.makedataforcreation();
             data.setClassIndex(data.numAttributes() - 1);
             RandomForest classifier = new RandomForest();
+
             classifier.buildClassifier(data);
-         ObjectOutputStream objectOutputStream = null;
-            if (which == 0){
-          objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File("mousedata.model")));
-            }
-            else{
-                 objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File("signature.model")));
+            // classifier.buildClassifier(positivedata);
+
+            ObjectOutputStream objectOutputStream = null;
+            if (which == 0) {
+                objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File("mousedataa.model")));
+            } else {
+                objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File("signature.model")));
             }
             objectOutputStream.writeObject(classifier);
             objectOutputStream.flush();
@@ -70,7 +80,7 @@ public class UserModelBuilder {
             }
             ind.setVisible(false);
             lab.setVisible(false);
-           
+
         } catch (Exception ex) {
             Logger.getLogger(UserModelBuilder.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -116,7 +126,6 @@ public class UserModelBuilder {
 //        }
 //
 //    }
-
     private static class ChaoShenContinuous_Idenification {
 
         public ChaoShenContinuous_Idenification() {

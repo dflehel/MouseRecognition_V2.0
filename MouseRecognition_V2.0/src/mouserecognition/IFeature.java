@@ -12,13 +12,21 @@ import weka.core.Instance;
  *
  * @author Denes
  */
-/** Az implementalt osztalyban el kell tarolni a featurek ertekeit amit majd a get instanccel kerek le a classifierben */
+/**
+ * Az implementalt osztalyban el kell tarolni a featurek ertekeit amit majd a
+ * get instanccel kerek le a classifierben
+ */
 public interface IFeature {
-    
-    /**Ez a fuggveny vissza adja az instancet a featurekbol*/
-     public Instance getInstance();
-     
-     /**A fuggveny felelosege az hogy megcsinalja a featurek kinyereset egy eventbol */
-     public void ExtractFeatures(ArrayList<IEvent> events);
-     
+
+    /**
+     * Ez a fuggveny vissza adja az instancet a featurekbol
+     */
+    public Instance getInstance();
+
+    /**
+     * A fuggveny felelosege az hogy megcsinalja a featurek kinyereset egy
+     * eventbol
+     */
+    public void ExtractFeatures(ArrayList<IEvent> events);
+
 }

@@ -15,6 +15,17 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import ScreenContolers.MainScreenController;
+import Settings.DataCollectorSettings;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.prefs.BackingStoreException;
+import java.util.prefs.InvalidPreferencesFormatException;
+import java.util.prefs.Preferences;
 /**
  *
  * @author Denes
@@ -26,9 +37,10 @@ public class Starter extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/Screen/MainScreen.fxml"));
         Scene scene = new Scene(root);
         
-        
+       primaryStage.setResizable(false);
        primaryStage.setScene(scene);
        primaryStage.show();
+   
     }
 
     /**
@@ -36,6 +48,7 @@ public class Starter extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+       
     }
     
 }

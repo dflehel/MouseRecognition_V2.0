@@ -5,6 +5,7 @@
  */
 package mouserecognition;
 
+import Settings.ClassifierSettings;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -14,7 +15,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static mouserecognition.Settings.AM_NUM_FEATURES;
+import static Settings.ClassifierSettings.AM_NUM_FEATURES;
 import weka.core.DenseInstance;
 import weka.core.Instance;
 
@@ -23,10 +24,11 @@ import weka.core.Instance;
  * @author manyi
  */
 public class TeacherFeature implements IFeature {
-    public static final String TEST_FILE ="test_user_1.arff";
+
+    public static final String TEST_FILE = "test_user_1.arff";
     public static PrintStream ps;
-    
-    public static void printHeader(){
+
+    public static void printHeader() {
         try {
             ps = new PrintStream(TEST_FILE);
         } catch (FileNotFoundException ex) {
@@ -34,24 +36,24 @@ public class TeacherFeature implements IFeature {
         }
         Scanner scanner = null;
         try {
-            scanner = new Scanner( new File("header.arff"));
+            scanner = new Scanner(new File("header.arff"));
         } catch (FileNotFoundException ex) {
             Logger.getLogger(TeacherFeature.class.getName()).log(Level.SEVERE, null, ex);
         }
-        while( scanner.hasNextLine() ){
+        while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             ps.println(line);
         }
-        
+
     }
-    
-    static{
+
+    static {
         printHeader();
     }
-    
-     @Override
+
+    @Override
     public void ExtractFeatures(ArrayList<IEvent> events) {
-        this.events = cleanEvents( events );
+        this.events = cleanEvents(events);
         events = this.events;
         this.setAction_type(actionType());
 
@@ -118,24 +120,23 @@ public class TeacherFeature implements IFeature {
         this.setSd_v(sdv);
         this.setMin_v(min_notnull_v);
         this.setMax_v(maxv);
-        
+
         this.setMean_vx(avgvx);
         this.setSd_vx(sdvx);
         this.setMin_vx(min_notnull_vx);
         this.setMax_vx(maxvx);
-        
+
         this.setMean_vy(avgvy);
         this.setSd_vy(sdvy);
         this.setMin_vy(min_notnull_vy);
         this.setMax_vy(maxvy);
-        
+
         this.setSum_of_angles(sum_of_angles);
-        
+
         //# direction: -pi..pi
         double theta0 = Math.atan2(events.get(events.size() - 1).getY() - events.get(0).getY(), events.get(events.size() - 1).getX() - events.get(0).getX());
         double direction = computeDirection(theta0);
         this.setDirection(direction);
-        
 
         // pointwise acceleration
         double a[] = new double[n - 2];
@@ -168,14 +169,13 @@ public class TeacherFeature implements IFeature {
         long elapsedTime = events.get(events.size() - 1).getTime() - events.get(0).getTime();
         a_beg_time /= elapsedTime;
 
-        
         this.setElapsed_time(elapsedTime);
         int numEvents = events.size();
         this.setNum_events(numEvents);
         this.setA_beg_time(a_beg_time);
 
         double traveledDistance = computeTraveledDistance(events);
-        if (traveledDistance < Settings.EPS) {
+        if (traveledDistance < ClassifierSettings.EPS) {
             return;
         }
         this.setTraveled_distance(traveledDistance);
@@ -185,7 +185,6 @@ public class TeacherFeature implements IFeature {
 
         double efficiency = endToEndLine / traveledDistance;
         this.setEfficiency(efficiency);
-        
 
         // Angular velocity
         double omega[] = new double[n - 1];
@@ -266,7 +265,7 @@ public class TeacherFeature implements IFeature {
             if (curvature[k] > max_curvature) {
                 max_curvature = curvature[k];
             }
-            if (curvature[k] < Settings.CURVATURE_THRESHOLD) {
+            if (curvature[k] < ClassifierSettings.CURVATURE_THRESHOLD) {
                 numCriticalPoints++;
             }
         }
@@ -276,28 +275,28 @@ public class TeacherFeature implements IFeature {
             sum += (curvature[l] - avg_curvature) * (curvature[l] - avg_curvature);
         }
         double sd_curvature = Math.sqrt(sum / (k + 1));
-        
+
         this.setNum_critical_points(numCriticalPoints);
         this.setLargest_deviation(largestDeviation(events));
         this.setMean_curv(avg_curvature);
         this.setSd_curv(sd_curvature);
         this.setMin_curv(min_curvature);
         this.setMax_curv(max_curvature);
-       
+
         //System.out.println(this.toString());
-        for( int j=0; j<this.values.length; ++j){
-            ps.printf("%8.5f,", values[ j]);
+        for (int j = 0; j < this.values.length; ++j) {
+            ps.printf("%8.5f,", values[j]);
         }
         ps.println(1);
         //System.out.println("Baj van 2");
-        
+
     }
-    
+
     @Override
-    public void finalize(){
+    public void finalize() {
         ps.close();
     }
-    
+
     public static final ArrayList<String> att = new ArrayList<String>(Arrays.asList(
             "elapsed_time", "num_events", "action_type", "num_critical_points", "traveled_distance",
             "end_to_end_line", "largest_deviation", "efficiency", "a_beg_time", "sum_of_angles",
@@ -346,7 +345,7 @@ public class TeacherFeature implements IFeature {
     @Override
     public String toString() {
         //return "TeacherFeature{" + "elapsed_time=" + elapsed_time + ", num_events=" + num_events + ", action_type=" + action_type + ", num_critical_points=" + num_critical_points + ", traveled_distance=" + traveled_distance + ", end_to_end_line=" + end_to_end_line + ", largest_deviation=" + largest_deviation + ", efficiency=" + efficiency + ", a_beg_time=" + a_beg_time + ", sum_of_angles=" + sum_of_angles + ", mean_v=" + mean_v + ", sd_v=" + sd_v + ", min_v=" + min_v + ", max_v=" + max_v + ", mean_vx=" + mean_vx + ", sd_vx=" + sd_vx + ", min_vx=" + min_vx + ", max_vx=" + max_vx + ", mean_vy=" + mean_vy + ", sd_vy=" + sd_vy + ", min_vy=" + min_vy + ", max_vy=" + max_vy + ", mean_a=" + mean_a + ", sd_a=" + sd_a + ", min_a=" + min_a + ", max_a=" + max_a + ", mean_omega=" + mean_omega + ", sd_omega=" + sd_omega + ", min_omega=" + min_omega + ", max_omega=" + max_omega + ", mean_jerk=" + mean_jerk + ", sd_jerk=" + sd_jerk + ", min_jerk=" + min_jerk + ", max_jerk=" + max_jerk + ", mean_curv=" + mean_curv + ", sd_curv=" + sd_curv + ", min_curv=" + min_curv + ", max_curv=" + max_curv + ", values=" + values + ", events=" + events + '}';
-        return "TeacherFeature{  direction=" + direction + ", action_type=" + action_type+ " Start: "+this.events.get(0).getX()+", "+this.events.get(0).getY()+" Stop: "+this.events.get(events.size()-1).getX()+", "+this.events.get(events.size()-1).getY();
+        return "TeacherFeature{  direction=" + direction + ", action_type=" + action_type + " Start: " + this.events.get(0).getX() + ", " + this.events.get(0).getY() + " Stop: " + this.events.get(events.size() - 1).getX() + ", " + this.events.get(events.size() - 1).getY();
     }
 
     @Override
@@ -398,7 +397,6 @@ public class TeacherFeature implements IFeature {
 //        this.min_curv = min_curv;
 //        this.max_curv = max_curv;
 //    }
-
     public double getElapsed_time() {
         return elapsed_time;
     }
@@ -750,8 +748,6 @@ public class TeacherFeature implements IFeature {
         this.values[38] = direction;
     }
 
-   
-
     private int actionType() {
         for (int i = 0; i < this.events.size(); ++i) {
             if (this.events.get(i).getActiontype().equalsIgnoreCase("Drag")) {
@@ -861,24 +857,22 @@ public class TeacherFeature implements IFeature {
     }
 
     private ArrayList<IEvent> cleanEvents(ArrayList<IEvent> events) {
-         this.events = new ArrayList<IEvent>();
+        this.events = new ArrayList<IEvent>();
         //An action does not start with Released mouse event 
-        int index =0;
-        while( index < events.size() && events.get( index ).getActiontype().equals("Released")){
+        int index = 0;
+        while (index < events.size() && events.get(index).getActiontype().equals("Released")) {
             ++index;
         }
-        this.events.add( events.get(index));
-       
-        for( ; index < events.size(); ++index ){
+        this.events.add(events.get(index));
+
+        for (; index < events.size(); ++index) {
             IEvent event = events.get(index);
-            if( event.getTime() != this.events.get(this.events.size() -1 ).getTime() ){
+            if (event.getTime() != this.events.get(this.events.size() - 1).getTime()) {
                 this.events.add(event);
-                
+
             }
-        }   
+        }
         return this.events;
     }
-    
-    
-    
+
 }
