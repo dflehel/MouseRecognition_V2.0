@@ -24,6 +24,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -66,6 +67,9 @@ public class MouseDataUserModelBulderScreenController implements Initializable {
 
     @FXML
     private RadioButton update;
+    
+    @FXML
+    private Button doit;
 
     private ToggleGroup group;
 
@@ -89,10 +93,12 @@ public class MouseDataUserModelBulderScreenController implements Initializable {
         } else {
 
         }
+        this.doit.setDisable(true);
         Thread modelmakethread = new Thread("Model make") {
             public void run() {
                 new UserModelBuilder(file, progressindicator, progrreslabel, 0);
                 Platform.runLater(() -> {
+                    doit.setDisable(false);
                     Stage dialog = new Stage();
                     dialog.initStyle(StageStyle.UTILITY);
                     Scene scene = new Scene(new Group(new Text(25, 25, "All is done!")));

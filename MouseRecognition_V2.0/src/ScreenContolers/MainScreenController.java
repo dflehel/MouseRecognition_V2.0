@@ -55,10 +55,10 @@ public class MainScreenController implements Initializable {
 
         TreeItem<String> menu11 = new TreeItem<>("Data Collecting");
         TreeItem<String> menu21 = new TreeItem<>("Data Collecting");
-        TreeItem<String> menu12 = new TreeItem<>("Make Model");
+        TreeItem<String> menu12 = new TreeItem<>("Create Model");
         TreeItem<String> menu13 = new TreeItem<>("Test Model");
         TreeItem<String> menu14 = new TreeItem<>("Update Model");
-        TreeItem<String> menu22 = new TreeItem<>("Make Model");
+        TreeItem<String> menu22 = new TreeItem<>("Create Model");
         TreeItem<String> menu23 = new TreeItem<>("Test Model");
         TreeItem<String> menu24 = new TreeItem<>("Update Model");
 
@@ -78,7 +78,7 @@ public class MainScreenController implements Initializable {
                             case "Data Collecting":
                                 MainScreenController.this.startSignatureDatacollecting();
                                 break;
-                            case "Make Model":
+                            case "Create Model":
                                 MainScreenController.this.startSignatureDataModelBuilder();
                                 break;
                             case "Test Model":
@@ -96,7 +96,7 @@ public class MainScreenController implements Initializable {
                             case "Data Collecting":
                                 MainScreenController.this.startDataCollectingMouseData();
                                 break;
-                            case "Make Model":
+                            case "Create Model":
                                 MainScreenController.this.startModelBuilderMouseData();
                                 break;
                             case "Test Model":
@@ -211,8 +211,11 @@ public class MainScreenController implements Initializable {
     }
 
     private void startModelBuilderMouseData() {
+     
         try {
+            System.out.println("1");
             Pane anchorpane = FXMLLoader.load(getClass().getResource("/Screen/MouseDataUserModelBulderScreen.fxml"));
+            System.out.println("2");
             boolean firsttime = true;
 
             for (Object o : this.f.getChildren().toArray()) {
@@ -227,6 +230,7 @@ public class MainScreenController implements Initializable {
             if (firsttime == true) {
                 this.f.getChildren().addAll(anchorpane);
             }
+            System.out.println("3");
         } catch (Exception e) {
             e.printStackTrace();
         }

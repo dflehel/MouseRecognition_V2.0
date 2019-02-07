@@ -21,6 +21,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
@@ -51,11 +52,19 @@ public class MouseDataCollertorScreenController implements Initializable {
 
     private Thread dataCollecting;
 
+    @FXML
+    private Button start;
+
+    @FXML
+    private Button stop;
+
     private DataCollectorSettings d = new DataCollectorSettings();
 
     @FXML
     public void pressStartButton(ActionEvent event) {
         Image image = new Image("Pictures/activepicture.png");
+         this.start.setDisable(true);
+        this.stop.setDisable(false);
         this.im2.setImage(image);
         this.onoff.setText("Active");
         this.dataCollecting = new Thread("DataCollector") {
@@ -117,6 +126,8 @@ public class MouseDataCollertorScreenController implements Initializable {
         this.collector.stop();
         this.dataCollecting.stop();
         DataCollectorSettings.savedata();
+         this.start.setDisable(false);
+        this.stop.setDisable(true);
         this.onoff.setText("Inactive");
     }
 

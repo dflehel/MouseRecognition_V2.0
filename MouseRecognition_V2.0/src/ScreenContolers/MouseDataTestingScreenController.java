@@ -39,6 +39,7 @@ import mouserecognition.IEvent;
 import mouserecognition.IFeature;
 import mouserecognition.MouseRecognition;
 import Settings.ClassifierSettings;
+import javafx.scene.control.Button;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 
@@ -67,13 +68,21 @@ public class MouseDataTestingScreenController implements Initializable {
 
     @FXML
     private LineChart chart;
-
+    
+    @FXML
+    private Button start;
+    
+    
+    @FXML
+    private Button stop;
     /**
      * Initializes the controller class.
      */
     @FXML
     public void pressStartButton(ActionEvent event) {
         Image image = new Image("Pictures/activepicture.png");
+        this.start.setDisable(true);
+        this.stop.setDisable(false);
         this.onoff.setText("Active");
         this.im2.setImage(image);
         DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd__HH_mm_ss");
@@ -156,6 +165,8 @@ public class MouseDataTestingScreenController implements Initializable {
         this.onoff.setText("Inactive");
         this.dataCollectorThread.stop();
         this.featureExtractionThread.stop();
+             this.start.setDisable(false);
+        this.stop.setDisable(true);
     }
 
     @Override
