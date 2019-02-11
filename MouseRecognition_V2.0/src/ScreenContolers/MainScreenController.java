@@ -65,7 +65,6 @@ public class MainScreenController implements Initializable {
         menu1.getChildren().addAll(menu11, menu12, menu13, menu14);
         menu2.getChildren().addAll(menu21, menu22, menu23);
         root.getChildren().addAll(/*menu1 ,*/menu2);
-
         this.menu.setRoot(root);
         this.menu.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override

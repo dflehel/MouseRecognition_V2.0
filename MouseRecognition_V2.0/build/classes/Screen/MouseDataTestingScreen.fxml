@@ -16,7 +16,7 @@
         <URL value="@mousedatatestingscreen.css" />
     </stylesheets>
    <children>
-      <LineChart fx:id="chart" alternativeRowFillVisible="false" createSymbols="false" layoutX="4.0" layoutY="138.0" legendVisible="false" prefHeight="247.0" prefWidth="622.0" title="Recognition accuracy" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="138.0">
+      <LineChart fx:id="chart" alternativeRowFillVisible="false" createSymbols="false" layoutX="4.0" layoutY="138.0" legendVisible="false" prefHeight="247.0" prefWidth="622.0" style="-fx-background-color: #ffffff;" title="Recognition accuracy" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="138.0">
          <xAxis>
             <CategoryAxis label="Number of actions" side="BOTTOM" tickLength="1.0" tickMarkVisible="false" />
          </xAxis>
@@ -24,8 +24,11 @@
             <NumberAxis label="Probability" side="LEFT" tickLength="1.0" />
          </yAxis>
       </LineChart>
-      <Button fx:id="start" layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#pressStartButton" prefHeight="45.0" prefWidth="93.0" text="Start" AnchorPane.bottomAnchor="330.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="530.0" AnchorPane.topAnchor="20.0" />
-      <Label fx:id="onoff" layoutX="311.0" layoutY="12.0" text="inactive">
+      <Button fx:id="start" layoutX="14.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressStartButton" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #00ff00; -fx-background-radius: 25; -fx-border-color: #000000; -fx-border-image-width: 2; -fx-border-radius: 25;" text="START" AnchorPane.bottomAnchor="335.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="573.0" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font size="11.0" />
+         </font></Button>
+      <Label fx:id="onoff" layoutX="311.0" layoutY="12.0" style="-fx-background-color: #ffffff;" text="inactive">
          <padding>
             <Insets top="2.0" />
          </padding>
@@ -39,12 +42,15 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="scorrelabel" alignment="CENTER" layoutX="296.0" layoutY="106.0" text="0%" wrapText="true" AnchorPane.bottomAnchor="257.0" AnchorPane.topAnchor="106.0">
+      <Label fx:id="scorrelabel" alignment="CENTER" layoutX="296.0" layoutY="106.0" style="-fx-background-color: #FFFFFF;" text="0%" wrapText="true" AnchorPane.bottomAnchor="257.0" AnchorPane.topAnchor="106.0">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Button fx:id="stop" disable="true" layoutX="578.0" layoutY="15.0" mnemonicParsing="false" onAction="#pressStopButton" text="Stop" AnchorPane.bottomAnchor="330.0" AnchorPane.leftAnchor="530.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0" />
+      <Button fx:id="stop" disable="true" layoutX="578.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressStopButton" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #ff0000; -fx-background-radius: 25; -fx-border-width: 2; -fx-border-color: #ffffff; -fx-border-radius: 25;" text="STOP" textFill="WHITE" AnchorPane.bottomAnchor="335.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font size="11.0" />
+         </font></Button>
       <ProgressBar fx:id="progressbar" layoutX="60.0" layoutY="81.0" prefHeight="18.0" prefWidth="471.0" progress="0.0" AnchorPane.bottomAnchor="296.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="81.0" />
    </children>
 </AnchorPane>

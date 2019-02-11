@@ -3,11 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Denes/Documents/NetBeansProjects/MouseRecognition_V2.0/MouseRecognition_V2.0/src/UserModelBuilder/UserModelBuilder.java</file>
             <file>file:/C:/Users/Denes/Documents/NetBeansProjects/MouseRecognition_V2.0/MouseRecognition_V2.0/src/mouserecognition/LehelFeature.java</file>
             <file>file:/C:/Users/Denes/Documents/NetBeansProjects/MouseRecognition_V2.0/MouseRecognition_V2.0/src/mousedatacollector/MouseDataCollector.java</file>
             <file>file:/C:/Users/Denes/Documents/NetBeansProjects/MouseRecognition_V2.0/MouseRecognition_V2.0/src/ScreenContolers/MouseDataTestingScreenController.java</file>
             <file>file:/C:/Users/Denes/Documents/NetBeansProjects/MouseRecognition_V2.0/MouseRecognition_V2.0/src/ScreenContolers/MainScreenController.java</file>
             <file>file:/C:/Users/Denes/Documents/NetBeansProjects/MouseRecognition_V2.0/MouseRecognition_V2.0/src/mouserecognition/DFLRandomForestClassifier.java</file>
+            <file>file:/C:/Users/Denes/Documents/NetBeansProjects/MouseRecognition_V2.0/MouseRecognition_V2.0/src/ScreenContolers/MouseDataUserModelBulderScreenController.java</file>
             <file>file:/C:/Users/Denes/Documents/NetBeansProjects/MouseRecognition_V2.0/MouseRecognition_V2.0/src/ScreenContolers/MouseDataCollertorScreenController.java</file>
             <file>file:/C:/Users/Denes/Documents/NetBeansProjects/MouseRecognition_V2.0/MouseRecognition_V2.0/src/UserModelBuilder/FeatureExtraction.java</file>
         </group>

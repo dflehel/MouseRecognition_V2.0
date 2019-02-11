@@ -40,6 +40,7 @@ import javafx.stage.StageStyle;
 import mouserecognition.DFLRandomForestClassifier;
 import mouserecognition.Extraction;
 import mouserecognition.IClassifier;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -104,6 +105,10 @@ public class MouseDataUserModelBulderScreenController implements Initializable {
                     Scene scene = new Scene(new Group(new Text(25, 25, "All is done!")));
                     dialog.setScene(scene);
                     dialog.showAndWait();
+                                     Notifications.create()
+              .title("Title Text")
+              .text("Hello World 0!")
+              .showWarning();
                 });
 
             }
