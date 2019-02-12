@@ -32,7 +32,6 @@ import javafx.scene.image.ImageView;
 import mousedatacollector.MouseDataCollector;
 import mouserecognition.DFLRandomForestClassifier;
 import mouserecognition.DataCollector;
-import mouserecognition.Display;
 import mouserecognition.Extraction;
 import mouserecognition.IClassifier;
 import mouserecognition.IEvent;
@@ -102,7 +101,7 @@ public class MouseDataTestingScreenController implements Initializable {
         String ss = dateFormat.format(date);
         Queue<ArrayList<IEvent>> events = new LinkedList<ArrayList<IEvent>>();
         FileWriter fileWriter;
-        Display d;
+
         //    d = new Display();
         //    d.setVisible(true);
         try {
