@@ -39,7 +39,12 @@ import mouserecognition.IEvent;
 import mouserecognition.IFeature;
 import mouserecognition.MouseRecognition;
 import Settings.ClassifierSettings;
+import javafx.application.Platform;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import org.controlsfx.control.MaskerPane;
+import org.controlsfx.control.Notifications;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 
@@ -54,6 +59,11 @@ public class MouseDataTestingScreenController implements Initializable {
     private ImageView im2;
     private Thread featureExtractionThread;
     private Thread dataCollectorThread;
+    
+     private MaskerPane masker = new MaskerPane();
+    
+    @FXML
+    private AnchorPane root;
 
     @FXML
     private Label onoff;
@@ -68,19 +78,20 @@ public class MouseDataTestingScreenController implements Initializable {
 
     @FXML
     private LineChart chart;
-    
+
     @FXML
     private Button start;
-    
-    
+
     @FXML
     private Button stop;
+
     /**
      * Initializes the controller class.
      */
     @FXML
     public void pressStartButton(ActionEvent event) {
         Image image = new Image("Pictures/activepicture.png");
+        this.masker.setVisible(true);
         this.start.setDisable(true);
         this.stop.setDisable(false);
         this.onoff.setText("Active");
@@ -118,9 +129,20 @@ public class MouseDataTestingScreenController implements Initializable {
                     IClassifier classifier = null;
 
                     classifier = new DFLRandomForestClassifier(moves, fileWriter, progressbar, scorrelabel, 0);
+                  
 
                     extraction.setClassifier(classifier);
+                      Platform.runLater(() -> {
+                       masker.setVisible(false);
+
+                        Notifications.create()
+                                .title("Load finished")
+                                .text("Your model was successfully loaded!")
+                                .position(Pos.CENTER)
+                                .showInformation();
+                    });
                     extraction.featuresextraction();
+                    
                 }
             };
 
@@ -165,7 +187,7 @@ public class MouseDataTestingScreenController implements Initializable {
         this.onoff.setText("Inactive");
         this.dataCollectorThread.stop();
         this.featureExtractionThread.stop();
-             this.start.setDisable(false);
+        this.start.setDisable(false);
         this.stop.setDisable(true);
     }
 
@@ -173,7 +195,12 @@ public class MouseDataTestingScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         this.chart.getData().add(GlobalSettings.series);
-
+         this.masker.setVisible(false);
+        this.masker.setProgress(-1);
+        this.masker.setText("Loading your model");
+        this.masker.setMinWidth(633);
+        this.masker.setMinHeight(395);
+        this.root.getChildren().add(this.masker);
     }
 
 }

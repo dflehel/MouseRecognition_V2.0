@@ -50,47 +50,26 @@ public class MainScreenController implements Initializable {
         TreeItem<String> root = new TreeItem<>("Menu");
         menu.setShowRoot(false);        // itemChild.setExpanded(false);
         //root is the parent of itemChild
-        TreeItem<String> menu1 = new TreeItem<>("Sugnature Recognition");
-        TreeItem<String> menu2 = new TreeItem<>("Mouse Recogniton");
+     
 
-        TreeItem<String> menu11 = new TreeItem<>("Data Collecting");
-        TreeItem<String> menu21 = new TreeItem<>("Data Collecting");
-        TreeItem<String> menu12 = new TreeItem<>("Create Model");
-        TreeItem<String> menu13 = new TreeItem<>("Test Model");
-        TreeItem<String> menu14 = new TreeItem<>("Update Model");
-        TreeItem<String> menu22 = new TreeItem<>("Create Model");
-        TreeItem<String> menu23 = new TreeItem<>("Test Model");
-        TreeItem<String> menu24 = new TreeItem<>("Update Model");
+        TreeItem<String> menu1 = new TreeItem<>("Data Collecting");
 
-        menu1.getChildren().addAll(menu11, menu12, menu13, menu14);
-        menu2.getChildren().addAll(menu21, menu22, menu23);
-        root.getChildren().addAll(/*menu1 ,*/menu2);
+     
+ 
+        TreeItem<String> menu2 = new TreeItem<>("Create Model");
+        TreeItem<String> menu3 = new TreeItem<>("Test Model");
+
+
+        root.getChildren().addAll(menu1,menu2,menu3);
         this.menu.setRoot(root);
         this.menu.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                 TreeItem<String> selectednew = (TreeItem<String>) newValue;
                 TreeItem<String> selectedold = (TreeItem<String>) oldValue;
-                switch (selectednew.getParent().getValue()) {
-                    case "Sugnature Recognition":
-                        switch (selectednew.getValue()) {
-                            case "Data Collecting":
-                                MainScreenController.this.startSignatureDatacollecting();
-                                break;
-                            case "Create Model":
-                                MainScreenController.this.startSignatureDataModelBuilder();
-                                break;
-                            case "Test Model":
-                                MainScreenController.this.startSignatureTest();
-                                break;
-                            case "Update Model":
-                                MainScreenController.this.startSignatureupdate();
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-                    case "Mouse Recogniton":
+              
+                        
+                   
                         switch (selectednew.getValue()) {
                             case "Data Collecting":
                                 MainScreenController.this.startDataCollectingMouseData();
@@ -101,16 +80,13 @@ public class MainScreenController implements Initializable {
                             case "Test Model":
                                 MainScreenController.this.startMouseTest();
                                 break;
-                            case "Update Model":
-                                MainScreenController.this.startUpdateMouse();
-                                break;
+                         
                             default:
                                 break;
                         }
-                        break;
-                    default:
-                        break;
-                }
+                    
+                     
+            
             }
 
         });

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
@@ -8,19 +10,22 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="mdmb" fx:id="mdmb" prefHeight="395.0" prefWidth="633.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScreenContolers.MouseDataUserModelBulderScreenController">
+<AnchorPane id="mdmb" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="395.0" prefWidth="633.0" style="-fx-background-color: #E3DAC9; -fx-border-color: #000000; -fx-border-width: 5;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScreenContolers.MouseDataUserModelBulderScreenController">
     <stylesheets>
         <URL value="@mousedatausermodelbulder.css" />
     </stylesheets>
    <children>
-      <VBox layoutX="447.0" layoutY="143.0" spacing="20.0">
+      <VBox layoutX="447.0" layoutY="143.0" spacing="20.0" style="-fx-border-color: #000000; -fx-border-width: 3; -fx-background-color: #a0a0a0; -fx-padding: 10;">
          <children>
-            <RadioButton fx:id="creat" layoutX="135.0" layoutY="195.0" mnemonicParsing="false" text="Create" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="10.0">
+            <RadioButton fx:id="creat" layoutX="135.0" layoutY="195.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="145.0" style="-fx-padding: 20; -fx-background-color: #ffff00; -fx-background-radius: 30;" text="Create" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="10.0">
                <font>
                   <Font size="20.0" />
                </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
             </RadioButton>
-            <RadioButton fx:id="update" layoutX="10.0" layoutY="195.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" text="Update" AnchorPane.bottomAnchor="127.0" AnchorPane.rightAnchor="498.0">
+            <RadioButton fx:id="update" layoutX="10.0" layoutY="195.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="145.0" style="-fx-padding: 20; -fx-background-color: #00ffff; -fx-background-radius: 30;" text="Update" AnchorPane.bottomAnchor="127.0" AnchorPane.rightAnchor="498.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -28,21 +33,24 @@
          </children>
       </VBox>
       <ProgressIndicator fx:id="progressindicator" layoutX="250.0" layoutY="236.0" visible="false" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="250.0" />
-      <Button fx:id="doit" layoutY="355.0" mnemonicParsing="false" onAction="#pressCreatButton" prefHeight="37.0" prefWidth="633.0" text="Do it!" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="355.0" />
-      <Label alignment="CENTER" layoutX="14.0" layoutY="36.0" prefHeight="92.0" prefWidth="512.0" text="Choose the feature set then select create or update" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <Button fx:id="doit" layoutY="355.0" mnemonicParsing="false" onAction="#pressCreatButton" prefHeight="62.0" prefWidth="633.0" style="-fx-background-radius: 25; -fx-border-color: #000000; -fx-border-width: 5; -fx-border-radius: 25; -fx-background-color: #00FF00;" text="DO IT!" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="329.0">
+         <font>
+            <Font name="Arial Black" size="24.0" />
+         </font></Button>
+      <Label alignment="CENTER" layoutX="14.0" layoutY="36.0" prefHeight="92.0" prefWidth="512.0" style="-fx-background-color: #323554;" text="Choose the feature set then select create or update" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
       <Label fx:id="progrreslabel" alignment="CENTER" layoutX="245.0" layoutY="299.0" text="Working!" visible="false" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="244.0" />
-      <VBox layoutX="28.0" layoutY="147.0" spacing="20.0">
+      <VBox layoutX="28.0" layoutY="147.0" spacing="20.0" style="-fx-padding: 20; -fx-background-color: #a0a0a0;">
          <children>
-            <Label layoutX="241.0" layoutY="156.0" prefHeight="27.0" prefWidth="177.0" text="Choose feature set">
+            <Label alignment="CENTER" layoutX="241.0" layoutY="156.0" prefHeight="27.0" prefWidth="177.0" style="-fx-background-color: #000000; -fx-background-radius: 10;" text="Choose feature set" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <ComboBox fx:id="selector" layoutX="242.0" layoutY="198.0" prefWidth="150.0" promptText="Feature set" />
+            <ComboBox fx:id="selector" layoutX="242.0" layoutY="198.0" prefHeight="25.0" prefWidth="178.0" promptText="Feature set" style="-fx-background-color: #FAEBD7;" />
          </children>
       </VBox>
    </children>

@@ -30,6 +30,7 @@ import javafx.scene.control.ProgressBar;
 import static Settings.ClassifierSettings.LOAD_MODEL;
 import static Settings.ClassifierSettings.NUM_ACTIONS;
 import static Settings.ClassifierSettings.NUM_TO_CLASSIFY;
+import javafx.scene.paint.Color;
 import weka.classifiers.UpdateableClassifier;
 import weka.core.Instances;
 import weka.core.Attribute;
@@ -395,6 +396,12 @@ public class DFLRandomForestClassifier implements IClassifier {
                 public void run() {
                     // if you change the UI, do it here !
                     bar.setProgress(mean);
+                    if (i >= 50){
+                      ClassifierSettings.setBarStyleClass(bar, ClassifierSettings.GREEN_BAR);
+                    }
+                    else{
+                        ClassifierSettings.setBarStyleClass(bar, ClassifierSettings.RED_BAR);
+                  }
                     lab.setText(i + "%");
                     GlobalSettings.series.getData().add(new XYChart.Data<>(counter + "", i));
                 }

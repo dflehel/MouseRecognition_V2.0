@@ -11,22 +11,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="mdc" fx:id="mdc" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="395.0" prefWidth="633.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScreenContolers.MouseDataCollertorScreenController">
+<AnchorPane id="mdc" fx:id="mdc" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="395.0" prefWidth="633.0" style="-fx-background-color: #FF9F55; -fx-border-width: 5; -fx-border-color: #000000;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScreenContolers.MouseDataCollertorScreenController">
     <stylesheets>
         <URL value="@mousedatacollertorscreen.css" />
     </stylesheets>
    <children>
-      <ListView fx:id="listfiles" layoutY="48.0" prefHeight="368.0" prefWidth="601.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="120.0" />
-      <Label fx:id="onoff" layoutX="333.0" layoutY="77.0" text="inactive" AnchorPane.bottomAnchor="289.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="239.0" AnchorPane.topAnchor="77.0">
+      <ListView fx:id="listfiles" layoutY="48.0" prefHeight="368.0" prefWidth="601.0" style="-fx-background-radius: 25; -fx-border-color: #000000; -fx-border-radius: 25; -fx-border-width: 5; -fx-padding: 10; -fx-background-color: #FAEBD7;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="120.0" />
+      <Label fx:id="onoff" layoutX="317.0" layoutY="58.0" prefHeight="59.0" prefWidth="142.0" text="inactive" AnchorPane.bottomAnchor="278.0" AnchorPane.leftAnchor="312.0" AnchorPane.rightAnchor="174.0" AnchorPane.topAnchor="53.0">
          <padding>
             <Insets top="2.0" />
          </padding>
          <font>
-            <Font size="18.0" />
+            <Font name="Arial Black" size="23.0" />
          </font>
       </Label>
-      <ImageView fx:id="im2" fitHeight="25.0" fitWidth="25.0" layoutX="292.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="291.0" AnchorPane.leftAnchor="292.0" AnchorPane.rightAnchor="316.0" AnchorPane.topAnchor="79.0" />
-      <Label fx:id="actionsnum" alignment="CENTER" layoutX="188.0" layoutY="14.0" text="0/0" AnchorPane.bottomAnchor="332.0" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="14.0" />
+      <ImageView fx:id="im2" fitHeight="50.0" fitWidth="50.0" layoutX="267.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="273.0" AnchorPane.leftAnchor="262.0" AnchorPane.rightAnchor="316.0" AnchorPane.topAnchor="58.0" />
+      <Label fx:id="actionsnum" alignment="CENTER" layoutX="188.0" layoutY="14.0" text="0/0" AnchorPane.bottomAnchor="332.0" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="14.0">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font></Label>
       <Button fx:id="stop" disable="true" layoutX="519.0" layoutY="13.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressStopButton" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255 ,0,  0,1); -fx-border-width: 2; -fx-border-color: #ffffff; -fx-border-radius: 50;" text="STOP" textFill="WHITE" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <font>
             <Font name="Arial Black" size="18.0" />

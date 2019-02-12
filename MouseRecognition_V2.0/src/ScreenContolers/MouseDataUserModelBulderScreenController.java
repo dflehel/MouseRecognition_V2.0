@@ -20,6 +20,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -32,6 +33,7 @@ import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -40,6 +42,7 @@ import javafx.stage.StageStyle;
 import mouserecognition.DFLRandomForestClassifier;
 import mouserecognition.Extraction;
 import mouserecognition.IClassifier;
+import org.controlsfx.control.MaskerPane;
 import org.controlsfx.control.Notifications;
 
 /**
@@ -51,6 +54,11 @@ public class MouseDataUserModelBulderScreenController implements Initializable {
 
     @FXML
     private CheckBox box;
+    
+    private MaskerPane masker = new MaskerPane();
+    
+    @FXML
+    private AnchorPane root;
 
     @FXML
     private Label progrreslabel;
@@ -87,6 +95,7 @@ public class MouseDataUserModelBulderScreenController implements Initializable {
 
     public void pressCreatButton(ActionEvent event) {
 
+        this.masker.setVisible(true);
         this.progressindicator.setVisible(true);
         this.progrreslabel.setVisible(true);
         if (UserModelBuilderSettings.whichfeature == 0) {
@@ -100,17 +109,14 @@ public class MouseDataUserModelBulderScreenController implements Initializable {
                 new UserModelBuilder(file, progressindicator, progrreslabel, 0);
                 Platform.runLater(() -> {
                     doit.setDisable(false);
-                    Stage dialog = new Stage();
-                    dialog.initStyle(StageStyle.UTILITY);
-                    Scene scene = new Scene(new Group(new Text(25, 25, "All is done!")));
-                    dialog.setScene(scene);
-                    dialog.showAndWait();
+            
                                      Notifications.create()
-              .title("Title Text")
-              .text("Hello World 0!")
-              .showWarning();
+              .title("Working finished")
+              .text("Your model was successfully created!")
+              .position(Pos.CENTER)
+              .showInformation();
                 });
-
+                masker.setVisible(false);
             }
         };
         modelmakethread.start();
@@ -145,6 +151,13 @@ public class MouseDataUserModelBulderScreenController implements Initializable {
         // TODO
         this.createselector();
         this.creatradiogroup();
+        this.masker.setVisible(false);
+        this.masker.setProgress(-1);
+        this.masker.setText("Working");
+        this.masker.setMinWidth(633);
+        this.masker.setMinHeight(395);
+        this.root.getChildren().add(this.masker);
+        
     }
 
 }

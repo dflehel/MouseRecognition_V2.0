@@ -37,9 +37,9 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="6.0" prefHeight="28.0" prefWidth="699.0" text="Mouse Recogniton" textAlignment="CENTER" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="6.0">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="6.0" prefHeight="71.0" prefWidth="798.0" style="-fx-background-color: #A5E196;" text="Mouse Recogniton" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font size="19.0" />
+                        <Font name="SansSerif Bold" size="55.0" />
                      </font>
                   </Label>
                </children>
@@ -50,7 +50,7 @@
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="310.0" prefWidth="143.0">
                            <children>
-                              <TreeView fx:id="menu" layoutX="-51.0" layoutY="8.0" prefHeight="310.0" prefWidth="98.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <TreeView fx:id="menu" layoutX="-51.0" layoutY="8.0" prefHeight="310.0" prefWidth="98.0" style="-fx-background-color: #7BAC6E; -fx-background-radius: 10; -fx-padding: 10; -fx-border-width: 2; -fx-border-color: #000000; -fx-border-radius: 10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
                       <AnchorPane fx:id="displaypanel" prefHeight="395.0" prefWidth="633.0">

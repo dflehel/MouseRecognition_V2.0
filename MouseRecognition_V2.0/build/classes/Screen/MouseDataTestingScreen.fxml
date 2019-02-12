@@ -11,46 +11,46 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="mdt" fx:id="mdt" prefHeight="395.0" prefWidth="633.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScreenContolers.MouseDataTestingScreenController">
+<AnchorPane id="mdt" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="395.0" prefWidth="633.0" style="-fx-background-color: #0067B1; -fx-border-color: #FFFFFF; -fx-border-width: 2;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScreenContolers.MouseDataTestingScreenController">
     <stylesheets>
         <URL value="@mousedatatestingscreen.css" />
     </stylesheets>
    <children>
-      <LineChart fx:id="chart" alternativeRowFillVisible="false" createSymbols="false" layoutX="4.0" layoutY="138.0" legendVisible="false" prefHeight="247.0" prefWidth="622.0" style="-fx-background-color: #ffffff;" title="Recognition accuracy" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="138.0">
+      <LineChart fx:id="chart" alternativeRowFillVisible="false" createSymbols="false" layoutX="4.0" layoutY="138.0" legendVisible="false" prefHeight="247.0" prefWidth="622.0" style="-fx-border-width: 3; -fx-border-color: #000000; -fx-background-color: #FFFFFF; -fx-background-radius: 31; -fx-border-radius: 30;" title="Recognition accuracy" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="138.0">
          <xAxis>
-            <CategoryAxis label="Number of actions" side="BOTTOM" tickLength="1.0" tickMarkVisible="false" />
+            <CategoryAxis label="Number of actions" side="BOTTOM" style="-fx-background-color: #ffffff;" tickLength="1.0" tickMarkVisible="false" />
          </xAxis>
          <yAxis>
-            <NumberAxis label="Probability" side="LEFT" tickLength="1.0" />
+            <NumberAxis label="Probability" prefHeight="173.0" prefWidth="37.0" side="LEFT" style="-fx-background-color: #ffffff; -fx-padding: 30;" tickLength="1.0" />
          </yAxis>
       </LineChart>
-      <Button fx:id="start" layoutX="14.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressStartButton" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #00ff00; -fx-background-radius: 25; -fx-border-color: #000000; -fx-border-image-width: 2; -fx-border-radius: 25;" text="START" AnchorPane.bottomAnchor="335.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="573.0" AnchorPane.topAnchor="10.0">
+      <Button fx:id="start" layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressStartButton" prefHeight="65.0" prefWidth="65.0" style="-fx-background-color: #00ff00; -fx-background-radius: 32; -fx-border-color: #000000; -fx-border-image-width: 2; -fx-border-radius: 32;" text="START" AnchorPane.bottomAnchor="323.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="561.0" AnchorPane.topAnchor="5.0">
          <font>
             <Font size="11.0" />
          </font></Button>
-      <Label fx:id="onoff" layoutX="311.0" layoutY="12.0" style="-fx-background-color: #ffffff;" text="inactive">
+      <Label fx:id="onoff" layoutX="296.0" layoutY="12.0" text="inactive" textFill="WHITE">
          <padding>
             <Insets top="2.0" />
          </padding>
          <font>
-            <Font size="20.0" />
+            <Font name="Arial Black" size="20.0" />
          </font>
       </Label>
-      <ImageView fx:id="im2" fitHeight="25.0" fitWidth="25.0" layoutX="269.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="275.0" layoutY="53.0" prefHeight="25.0" prefWidth="83.0" text="Recognition" wrapText="true" AnchorPane.bottomAnchor="317.0" AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="275.0" AnchorPane.topAnchor="53.0">
+      <ImageView fx:id="im2" fitHeight="25.0" fitWidth="25.0" layoutX="263.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="275.0" layoutY="53.0" prefHeight="25.0" prefWidth="83.0" text="Recognition" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="317.0" AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="275.0" AnchorPane.topAnchor="53.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="scorrelabel" alignment="CENTER" layoutX="296.0" layoutY="106.0" style="-fx-background-color: #FFFFFF;" text="0%" wrapText="true" AnchorPane.bottomAnchor="257.0" AnchorPane.topAnchor="106.0">
+      <Label fx:id="scorrelabel" alignment="CENTER" layoutX="296.0" layoutY="106.0" text="0%" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="257.0" AnchorPane.topAnchor="106.0">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Button fx:id="stop" disable="true" layoutX="578.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressStopButton" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #ff0000; -fx-background-radius: 25; -fx-border-width: 2; -fx-border-color: #ffffff; -fx-border-radius: 25;" text="STOP" textFill="WHITE" AnchorPane.bottomAnchor="335.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <Button fx:id="stop" disable="true" layoutX="554.0" layoutY="23.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressStopButton" prefHeight="65.0" prefWidth="65.0" style="-fx-background-color: #ff0000; -fx-background-radius: 32; -fx-border-width: 2; -fx-border-color: #ffffff; -fx-border-radius: 32;" text="STOP" textFill="WHITE" AnchorPane.bottomAnchor="323.0" AnchorPane.leftAnchor="561.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <font>
             <Font size="11.0" />
          </font></Button>
-      <ProgressBar fx:id="progressbar" layoutX="60.0" layoutY="81.0" prefHeight="18.0" prefWidth="471.0" progress="0.0" AnchorPane.bottomAnchor="296.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="81.0" />
+      <ProgressBar fx:id="progressbar" layoutX="60.0" layoutY="81.0" prefHeight="18.0" prefWidth="471.0" progress="0.0" style="-fx-border-width: 3; -fx-border-radius: 20; -fx-border-color: #FFFFFF; -fx-background-radius: 20;" stylesheets="@progresbarcolor.css" AnchorPane.bottomAnchor="296.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="81.0" />
    </children>
 </AnchorPane>

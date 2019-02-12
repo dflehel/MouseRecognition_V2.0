@@ -5,6 +5,8 @@
  */
 package Settings;
 
+import javafx.scene.control.ProgressBar;
+
 /**
  *
  * @author Denes
@@ -42,5 +44,15 @@ public class ClassifierSettings {
     public static final double CURVATURE_THRESHOLD = 5.0E-4;
     public static double EPS = 1.0E-5;
     //public static final int NUM_FEATURES = 39;
+
+    public static final String RED_BAR = "red-bar";
+
+    public static final String GREEN_BAR = "green-bar";
+    public static final String[] barColorStyleClasses = {RED_BAR, GREEN_BAR};
+
+    public static void setBarStyleClass(ProgressBar bar, String barStyleClass) {
+        bar.getStyleClass().removeAll(barColorStyleClasses);
+        bar.getStyleClass().add(barStyleClass);
+    }
 
 }
