@@ -16,7 +16,7 @@
         <URL value="@mousedatatestingscreen.css" />
     </stylesheets>
    <children>
-      <LineChart fx:id="chart" alternativeRowFillVisible="false" createSymbols="false" layoutX="4.0" layoutY="138.0" legendVisible="false" prefHeight="247.0" prefWidth="622.0" style="-fx-border-width: 3; -fx-border-color: #000000; -fx-background-color: #FFFFFF; -fx-background-radius: 31; -fx-border-radius: 30;" title="Recognition accuracy" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="138.0">
+      <LineChart fx:id="chart" alternativeRowFillVisible="false" createSymbols="false" layoutX="4.0" layoutY="149.0" legendVisible="false" prefHeight="246.0" prefWidth="629.0" style="-fx-border-width: 3; -fx-border-color: #000000; -fx-background-color: #FFFFFF; -fx-background-radius: 31; -fx-border-radius: 30;" title="Recognition accuracy" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="147.0">
          <xAxis>
             <CategoryAxis label="Number of actions" side="BOTTOM" style="-fx-background-color: #ffffff;" tickLength="1.0" tickMarkVisible="false" />
          </xAxis>
@@ -24,10 +24,16 @@
             <NumberAxis label="Probability" prefHeight="173.0" prefWidth="37.0" side="LEFT" style="-fx-background-color: #ffffff; -fx-padding: 30;" tickLength="1.0" />
          </yAxis>
       </LineChart>
-      <Button fx:id="start" layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressStartButton" prefHeight="65.0" prefWidth="65.0" style="-fx-background-color: #00ff00; -fx-background-radius: 32; -fx-border-color: #000000; -fx-border-image-width: 2; -fx-border-radius: 32;" text="START" AnchorPane.bottomAnchor="323.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="561.0" AnchorPane.topAnchor="5.0">
+      <Button fx:id="start" layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressStartButton" prefHeight="65.0" prefWidth="65.0" style="-fx-background-color: #00ff00; -fx-background-radius: 32; -fx-border-color: #000000; -fx-border-image-width: 2; -fx-border-radius: 32;" AnchorPane.bottomAnchor="323.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="561.0" AnchorPane.topAnchor="5.0">
          <font>
             <Font size="11.0" />
-         </font></Button>
+         </font>
+         <graphic>
+            <ImageView fitHeight="64.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Pictures/playicon.png" />
+               </image></ImageView>
+         </graphic></Button>
       <Label fx:id="onoff" layoutX="296.0" layoutY="12.0" text="inactive" textFill="WHITE">
          <padding>
             <Insets top="2.0" />
@@ -37,20 +43,37 @@
          </font>
       </Label>
       <ImageView fx:id="im2" fitHeight="25.0" fitWidth="25.0" layoutX="263.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="275.0" layoutY="53.0" prefHeight="25.0" prefWidth="83.0" text="Recognition" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="317.0" AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="275.0" AnchorPane.topAnchor="53.0">
+      <Label layoutX="278.0" layoutY="70.0" prefHeight="25.0" prefWidth="83.0" text="Recognition" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="304.0" AnchorPane.leftAnchor="278.0" AnchorPane.rightAnchor="276.0" AnchorPane.topAnchor="70.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="scorrelabel" alignment="CENTER" layoutX="296.0" layoutY="106.0" text="0%" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="257.0" AnchorPane.topAnchor="106.0">
+      <Label fx:id="scorrelabel" alignment="CENTER" layoutX="294.0" layoutY="111.0" prefHeight="40.0" prefWidth="48.0" text="0%" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="248.0" AnchorPane.topAnchor="111.0">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Button fx:id="stop" disable="true" layoutX="554.0" layoutY="23.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressStopButton" prefHeight="65.0" prefWidth="65.0" style="-fx-background-color: #ff0000; -fx-background-radius: 32; -fx-border-width: 2; -fx-border-color: #ffffff; -fx-border-radius: 32;" text="STOP" textFill="WHITE" AnchorPane.bottomAnchor="323.0" AnchorPane.leftAnchor="561.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <Button fx:id="stop" disable="true" layoutX="554.0" layoutY="23.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressStopButton" prefHeight="65.0" prefWidth="65.0" style="-fx-background-color: #ff0000; -fx-background-radius: 32; -fx-border-width: 2; -fx-border-color: #ffffff; -fx-border-radius: 32;" textFill="WHITE" AnchorPane.bottomAnchor="323.0" AnchorPane.leftAnchor="561.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <font>
             <Font size="11.0" />
-         </font></Button>
-      <ProgressBar fx:id="progressbar" layoutX="60.0" layoutY="81.0" prefHeight="18.0" prefWidth="471.0" progress="0.0" style="-fx-border-width: 3; -fx-border-radius: 20; -fx-border-color: #FFFFFF; -fx-background-radius: 20;" stylesheets="@progresbarcolor.css" AnchorPane.bottomAnchor="296.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="81.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="76.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Pictures/stopicon.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <ProgressBar fx:id="progressbar" layoutX="17.0" layoutY="95.0" prefHeight="20.0" prefWidth="605.0" progress="0.0" style="-fx-border-width: 3; -fx-border-radius: 20; -fx-border-color: #FFFFFF; -fx-background-radius: 20;" stylesheets="@progresbarcolor.css" AnchorPane.bottomAnchor="282.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="93.0" />
+      <Label layoutX="10.0" layoutY="66.0" prefHeight="30.0" prefWidth="63.0" text="START" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="571.0" layoutY="66.0" prefHeight="30.0" prefWidth="48.0" text="ST0P" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

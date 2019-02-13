@@ -171,45 +171,5 @@ public class MouseDataCollector implements NativeMouseInputListener, NativeMouse
         }
     }
 
-//	public static void main(String[] args) {
-//            
-//                DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd__HH_mm_ss");
-//                Date date = new Date();
-//               
-//                String s = dateFormat.format(date);
-//            try{
-//                FileWriter files = new FileWriter(s+".CSV");
-//                files.append("client timestamp,button,state,x,y\n");
-//            
-//               try {
-//                GlobalScreen.registerNativeHook();
-//                Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
-//                logger.setLevel(Level.OFF);
-//
-//                // Don't forget to disable the parent handlers.
-//                logger.setUseParentHandlers(false);
-//                }
-//                catch (NativeHookException ex) {
-//                System.err.println("There was a problem registering the native hook.");
-//                System.err.println(ex.getMessage());
-//                
-//                System.exit(1);
-//                }
-//                
-//                // Construct the example object.
-//                MouseDataCollector example = new MouseDataCollector();
-//                example.setWrite(files);
-//                // Add the appropriate listeners.
-//                GlobalScreen.addNativeMouseListener(example);
-//                GlobalScreen.addNativeMouseMotionListener(example);
-//                GlobalScreen.addNativeMouseWheelListener(example);
-//                GlobalScreen.unregisterNativeHook();
-//                }
-//
-//        catch (IOException ex) {
-//                Logger.getLogger(MouseDataCollector.class.getName()).log(Level.SEVERE, null, ex);
-//                } catch (NativeHookException ex) {
-//                Logger.getLogger(MouseDataCollector.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//}
+
 }

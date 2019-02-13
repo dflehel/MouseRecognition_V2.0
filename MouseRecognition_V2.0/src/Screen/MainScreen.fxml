@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -46,11 +47,45 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <SplitPane dividerPositions="0.2014388489208633" layoutX="169.0" layoutY="8.0" prefHeight="312.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane dividerPositions="0.20100502512562815" layoutX="169.0" layoutY="8.0" prefHeight="312.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="310.0" prefWidth="143.0">
+                      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="395.0" prefWidth="167.0">
                            <children>
-                              <TreeView fx:id="menu" layoutX="-51.0" layoutY="8.0" prefHeight="310.0" prefWidth="98.0" style="-fx-background-color: #7BAC6E; -fx-background-radius: 10; -fx-padding: 10; -fx-border-width: 2; -fx-border-color: #000000; -fx-border-radius: 10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Button fx:id="datacollector" alignment="BOTTOM_CENTER" contentDisplay="TOP" defaultButton="true" mnemonicParsing="false" prefHeight="131.0" prefWidth="167.0" style="-fx-background-radius: 10; -fx-border-color: #000000; -fx-border-width: 3; -fx-border-radius: 10;" text="Data Collecting" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font name="Arial Black" size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="103.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Pictures/DataCollectingIcon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
+                              <Button fx:id="testmodel" alignment="BOTTOM_CENTER" contentDisplay="TOP" defaultButton="true" layoutY="250.0" mnemonicParsing="false" prefHeight="131.0" prefWidth="167.0" style="-fx-background-radius: 10; -fx-border-color: #000000; -fx-border-radius: 10; -fx-border-width: 3;" text="Test Model" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0">
+                                 <font>
+                                    <Font name="Arial Black" size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="87.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Pictures/TestModelIcon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="buildmodel" alignment="BOTTOM_CENTER" contentDisplay="TOP" defaultButton="true" layoutY="132.0" mnemonicParsing="false" prefHeight="131.0" prefWidth="167.0" style="-fx-background-radius: 10; -fx-border-color: #000000; -fx-border-width: 3; -fx-border-radius: 10;" text="Create Model" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0">
+                                 <font>
+                                    <Font name="Arial Black" size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="92.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Pictures/ModelBuilderIcon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
                            </children>
                         </AnchorPane>
                       <AnchorPane fx:id="displaypanel" prefHeight="395.0" prefWidth="633.0">

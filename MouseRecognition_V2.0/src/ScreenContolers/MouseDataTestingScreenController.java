@@ -36,7 +36,6 @@ import mouserecognition.Extraction;
 import mouserecognition.IClassifier;
 import mouserecognition.IEvent;
 import mouserecognition.IFeature;
-import mouserecognition.MouseRecognition;
 import Settings.ClassifierSettings;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
@@ -175,7 +174,7 @@ public class MouseDataTestingScreenController implements Initializable {
             //    classificationThread.join();
 
         } catch (IOException ex) {
-            Logger.getLogger(MouseRecognition.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MouseDataTestingScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

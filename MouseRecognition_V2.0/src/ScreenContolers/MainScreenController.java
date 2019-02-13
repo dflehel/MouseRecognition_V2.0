@@ -13,10 +13,12 @@ import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -33,64 +35,48 @@ public class MainScreenController implements Initializable {
     @FXML
     private AnchorPane displaypanel;
 
-    @FXML
-    private TreeView menu;
+    // @FXML
+    //  private TreeView menu;
     @FXML
     private ProgressBar progressbarforprobs;
 
     @FXML
     private Pane f;
 
+    @FXML
+    private Button datacollector;
+
+    @FXML
+    private Button buildmodel;
+
+    @FXML
+    private Button testmodel;
+
     /**
      * Initializes the controller class.
      *
      */
-    private void creatmenu() {
-
-        TreeItem<String> root = new TreeItem<>("Menu");
-        menu.setShowRoot(false);        // itemChild.setExpanded(false);
-        //root is the parent of itemChild
-     
-
-        TreeItem<String> menu1 = new TreeItem<>("Data Collecting");
-
-     
- 
-        TreeItem<String> menu2 = new TreeItem<>("Create Model");
-        TreeItem<String> menu3 = new TreeItem<>("Test Model");
-
-
-        root.getChildren().addAll(menu1,menu2,menu3);
-        this.menu.setRoot(root);
-        this.menu.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+    private void setbuttons() {
+        this.datacollector.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                TreeItem<String> selectednew = (TreeItem<String>) newValue;
-                TreeItem<String> selectedold = (TreeItem<String>) oldValue;
-              
-                        
-                   
-                        switch (selectednew.getValue()) {
-                            case "Data Collecting":
-                                MainScreenController.this.startDataCollectingMouseData();
-                                break;
-                            case "Create Model":
-                                MainScreenController.this.startModelBuilderMouseData();
-                                break;
-                            case "Test Model":
-                                MainScreenController.this.startMouseTest();
-                                break;
-                         
-                            default:
-                                break;
-                        }
-                    
-                     
-            
+            public void handle(ActionEvent e) {
+                startDataCollectingMouseData();
             }
-
         });
 
+        this.buildmodel.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                startModelBuilderMouseData();
+            }
+        });
+
+        this.testmodel.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                startMouseTest();
+            }
+        });
     }
 
     private void startSignatureupdate() {
@@ -186,7 +172,7 @@ public class MainScreenController implements Initializable {
     }
 
     private void startModelBuilderMouseData() {
-     
+
         try {
             System.out.println("1");
             Pane anchorpane = FXMLLoader.load(getClass().getResource("/Screen/MouseDataUserModelBulderScreen.fxml"));
@@ -214,7 +200,7 @@ public class MainScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        this.creatmenu();
+        this.setbuttons();
         DataCollectorSettings.loaddata();
     }
 
