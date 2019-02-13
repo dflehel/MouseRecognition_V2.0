@@ -667,13 +667,17 @@ public class LehelFeature implements IFeature {
     }
 
     private int milyengob() {
+       if (this.events.get(this.events.size()-1) != null){
         if (this.events.get(this.events.size() - 1).getButtonype().equalsIgnoreCase("Left")) {
             return 1;
         }
         if (this.events.get(this.events.size() - 1).getButtonype().equalsIgnoreCase("Right")) {
             return 2;
         }
+       }
+
         return 0;
+      
     }
 
 }

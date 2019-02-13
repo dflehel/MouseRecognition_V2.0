@@ -39,7 +39,7 @@ import org.jnativehook.NativeHookException;
 public class MouseDataCollertorScreenController implements Initializable {
 
     @FXML
-    private ImageView im2;
+    private ImageView activationstateimag;
     @FXML
     private ListView listfiles;
 
@@ -65,7 +65,7 @@ public class MouseDataCollertorScreenController implements Initializable {
         Image image = new Image("Pictures/activepicture.png");
          this.start.setDisable(true);
         this.stop.setDisable(false);
-        this.im2.setImage(image);
+        this.activationstateimag.setImage(image);
         this.onoff.setText("Active");
         this.dataCollecting = new Thread("DataCollector") {
             public void run() {
@@ -99,7 +99,6 @@ public class MouseDataCollertorScreenController implements Initializable {
                     // Add the appropriate listeners.
                     GlobalScreen.addNativeMouseListener(collector);
                     GlobalScreen.addNativeMouseMotionListener(collector);
-                    GlobalScreen.addNativeMouseWheelListener(collector);
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
@@ -119,10 +118,9 @@ public class MouseDataCollertorScreenController implements Initializable {
     @FXML
     public void pressStopButton(ActionEvent event) {
         Image image = new Image("Pictures/inactivepicture.png");
-        this.im2.setImage(image);
+        this.activationstateimag.setImage(image);
         GlobalScreen.removeNativeMouseListener(collector);
         GlobalScreen.removeNativeMouseMotionListener(collector);
-        GlobalScreen.removeNativeMouseWheelListener(collector);
         this.collector.stop();
         this.dataCollecting.stop();
         DataCollectorSettings.savedata();
@@ -148,7 +146,7 @@ public class MouseDataCollertorScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Image image = new Image("Pictures/inactivepicture.png");
-        this.im2.setImage(image);
+        this.activationstateimag.setImage(image);
         this.listfiles();
         this.actionsnum.setText(DataCollectorSettings.numberofactions + " / " + DataCollectorSettings.minimumofmouseactions);
         // TODO

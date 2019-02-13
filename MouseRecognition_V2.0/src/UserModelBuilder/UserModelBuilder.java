@@ -33,7 +33,9 @@ import weka.core.Instances;
  */
 public class UserModelBuilder {
 
-    public UserModelBuilder(File negativafile, ProgressIndicator ind, Label lab, int which) {
+    private FeatureExtraction extracion;
+
+    public UserModelBuilder(File negativafile, int which) {
         try {
             BufferedReader negativedatafile = null;
             try {
@@ -42,7 +44,7 @@ public class UserModelBuilder {
                 negativedatafile = new BufferedReader(new FileReader(negativafile));
 
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(ChaoShenContinuous_Idenification.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(UserModelBuilder.class.getName()).log(Level.SEVERE, null, ex);
             }
             Instances data = null;
             Instances positivedata = null;
@@ -50,10 +52,10 @@ public class UserModelBuilder {
                 data = new Instances(negativedatafile);
 
             } catch (IOException ex) {
-                Logger.getLogger(ChaoShenContinuous_Idenification.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(UserModelBuilder.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            FeatureExtraction extracion = new FeatureExtraction();
+            this.extracion = new FeatureExtraction();
             extracion.setData(data);
             extracion.makedataforcreation();
             data.setClassIndex(data.numAttributes() - 1);
@@ -78,8 +80,7 @@ public class UserModelBuilder {
             for (int i = 0; i < 2; ++i) {
                 System.out.println("AUC " + (i) + ": " + eval.areaUnderROC(i));
             }
-            ind.setVisible(false);
-            lab.setVisible(false);
+    
 
         } catch (Exception ex) {
             Logger.getLogger(UserModelBuilder.class.getName()).log(Level.SEVERE, null, ex);
@@ -88,48 +89,6 @@ public class UserModelBuilder {
 
     public static final int NUMUSERS = 21;
 
-    //public static final int NUMUSERS = 10;
-//    public static void main(String[] args) throws Exception {
-//        BufferedReader datafile = null;
-//        try {
-//            //datafile = new BufferedReader(new FileReader("chaoshencont_39feat_PC_DD_1000.arff"));
-//            //datafile = new BufferedReader(new FileReader("javasanmegszurt1.arff"));
-//            datafile = new BufferedReader(new FileReader("bemenet.arff"));
-//        } catch (FileNotFoundException ex) {
-//            //      Logger.getLogger(ChaoShenContinuous_Idenification.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//        Instances data = null;
-//        try {
-//            data = new Instances(datafile);
-//        } catch (IOException ex) {
-//            //       Logger.getLogger(ChaoShenContinuous_Idenification.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        data.setClassIndex(data.numAttributes() - 1);
-//
-//        RandomForest classifier = new RandomForest();
-//        classifier.setNumFeatures(23);
-//        classifier.setMaxDepth(10);
-//        classifier.buildClassifier(data);
-//        ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File("betoltes.model")));
-//        objectOutputStream.writeObject(classifier);
-//        objectOutputStream.flush();
-//        objectOutputStream.close();
-//
-//        Evaluation eval = new Evaluation(data);
-//        eval.crossValidateModel(classifier, data, 10, new Random(1));
-//        System.out.println(eval.toSummaryString());
-//        System.out.println("**********");
-//
-//        for (int i = 0; i < NUMUSERS; ++i) {
-//            System.out.println("AUC " + (i) + ": " + eval.areaUnderROC(i));
-//        }
-//
-//    }
-    private static class ChaoShenContinuous_Idenification {
 
-        public ChaoShenContinuous_Idenification() {
-        }
-    }
 
 }

@@ -41,7 +41,7 @@ public class MainScreenController implements Initializable {
     private ProgressBar progressbarforprobs;
 
     @FXML
-    private Pane f;
+    private Pane mainpanel;
 
     @FXML
     private Button datacollector;
@@ -82,7 +82,7 @@ public class MainScreenController implements Initializable {
     private void startSignatureupdate() {
         try {
             Pane anchorpane = FXMLLoader.load(getClass().getResource("/Screen/SignatureUpdateScreen.fxml"));
-            this.f.getChildren().setAll(anchorpane);
+            this.mainpanel.getChildren().setAll(anchorpane);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -91,7 +91,7 @@ public class MainScreenController implements Initializable {
     private void startSignatureTest() {
         try {
             Pane anchorpane = FXMLLoader.load(getClass().getResource("/Screen/SignatureRecognitionTestScreen.fxml"));
-            this.f.getChildren().setAll(anchorpane);
+            this.mainpanel.getChildren().setAll(anchorpane);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -100,7 +100,7 @@ public class MainScreenController implements Initializable {
     private void startSignatureDataModelBuilder() {
         try {
             Pane anchorpane = FXMLLoader.load(getClass().getResource("/Screen/SignatureMakeModelScreen.fxml"));
-            this.f.getChildren().setAll(anchorpane);
+            this.mainpanel.getChildren().setAll(anchorpane);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -109,7 +109,7 @@ public class MainScreenController implements Initializable {
     private void startSignatureDatacollecting() {
         try {
             Pane anchorpane = FXMLLoader.load(getClass().getResource("/Screen/SignatureDataCollectingScreen.fxml"));
-            this.f.getChildren().setAll(anchorpane);
+            this.mainpanel.getChildren().setAll(anchorpane);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -119,7 +119,7 @@ public class MainScreenController implements Initializable {
         try {
             Pane anchorpane = FXMLLoader.load(getClass().getResource("/Screen/UpdateModelMouseData.fxml"));
 
-            this.f.getChildren().setAll(anchorpane);
+            this.mainpanel.getChildren().setAll(anchorpane);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -131,7 +131,7 @@ public class MainScreenController implements Initializable {
             Pane anchorpane = FXMLLoader.load(getClass().getResource("/Screen/MouseDataTestingScreen.fxml"));
             boolean firsttime = true;
 
-            for (Object o : this.f.getChildren().toArray()) {
+            for (Object o : this.mainpanel.getChildren().toArray()) {
                 AnchorPane a = (AnchorPane) o;
                 if (a.getId().equalsIgnoreCase("mdt")) {
                     firsttime = false;
@@ -141,7 +141,7 @@ public class MainScreenController implements Initializable {
                 }
             }
             if (firsttime == true) {
-                this.f.getChildren().addAll(anchorpane);
+                this.mainpanel.getChildren().addAll(anchorpane);
             }
 
         } catch (Exception e) {
@@ -154,7 +154,7 @@ public class MainScreenController implements Initializable {
             Pane anchorpane = FXMLLoader.load(getClass().getResource("/Screen/MouseDataCollertorScreen.fxml"));
             boolean firsttime = true;
 
-            for (Object o : this.f.getChildren().toArray()) {
+            for (Object o : this.mainpanel.getChildren().toArray()) {
                 AnchorPane a = (AnchorPane) o;
                 if (a.getId().equalsIgnoreCase("mdc")) {
                     firsttime = false;
@@ -164,7 +164,7 @@ public class MainScreenController implements Initializable {
                 }
             }
             if (firsttime == true) {
-                this.f.getChildren().addAll(anchorpane);
+                this.mainpanel.getChildren().addAll(anchorpane);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -179,7 +179,7 @@ public class MainScreenController implements Initializable {
             System.out.println("2");
             boolean firsttime = true;
 
-            for (Object o : this.f.getChildren().toArray()) {
+            for (Object o : this.mainpanel.getChildren().toArray()) {
                 AnchorPane a = (AnchorPane) o;
                 if (a.getId().equalsIgnoreCase("mdmb")) {
                     firsttime = false;
@@ -189,7 +189,7 @@ public class MainScreenController implements Initializable {
                 }
             }
             if (firsttime == true) {
-                this.f.getChildren().addAll(anchorpane);
+                this.mainpanel.getChildren().addAll(anchorpane);
             }
             System.out.println("3");
         } catch (Exception e) {

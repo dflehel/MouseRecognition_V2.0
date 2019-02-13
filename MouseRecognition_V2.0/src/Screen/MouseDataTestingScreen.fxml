@@ -34,7 +34,7 @@
                   <Image url="@../Pictures/playicon.png" />
                </image></ImageView>
          </graphic></Button>
-      <Label fx:id="onoff" layoutX="296.0" layoutY="12.0" text="inactive" textFill="WHITE">
+      <Label fx:id="onoff" layoutX="296.0" layoutY="12.0" text="Inactive" textFill="WHITE">
          <padding>
             <Insets top="2.0" />
          </padding>
@@ -42,7 +42,7 @@
             <Font name="Arial Black" size="20.0" />
          </font>
       </Label>
-      <ImageView fx:id="im2" fitHeight="25.0" fitWidth="25.0" layoutX="263.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="activationstateimag" fitHeight="25.0" fitWidth="25.0" layoutX="263.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="278.0" layoutY="70.0" prefHeight="25.0" prefWidth="83.0" text="Recognition" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="304.0" AnchorPane.leftAnchor="278.0" AnchorPane.rightAnchor="276.0" AnchorPane.topAnchor="70.0">
          <font>
             <Font size="14.0" />

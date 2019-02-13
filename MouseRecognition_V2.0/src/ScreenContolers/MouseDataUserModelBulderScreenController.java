@@ -60,11 +60,8 @@ public class MouseDataUserModelBulderScreenController implements Initializable {
     @FXML
     private AnchorPane root;
 
-    @FXML
-    private Label progrreslabel;
 
-    @FXML
-    private ProgressIndicator progressindicator;
+
 
     private File file;
 
@@ -96,8 +93,6 @@ public class MouseDataUserModelBulderScreenController implements Initializable {
     public void pressCreatButton(ActionEvent event) {
 
         this.masker.setVisible(true);
-        this.progressindicator.setVisible(true);
-        this.progrreslabel.setVisible(true);
         if (UserModelBuilderSettings.whichfeature == 0) {
             this.file = new File("Negative Data/lehelf.arff");
         } else {
@@ -106,7 +101,7 @@ public class MouseDataUserModelBulderScreenController implements Initializable {
         this.doit.setDisable(true);
         Thread modelmakethread = new Thread("Model make") {
             public void run() {
-                new UserModelBuilder(file, progressindicator, progrreslabel, 0);
+                new UserModelBuilder(file, 0);
                 Platform.runLater(() -> {
                     doit.setDisable(false);
             

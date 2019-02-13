@@ -54,12 +54,12 @@ import org.jnativehook.NativeHookException;
 public class MouseDataTestingScreenController implements Initializable {
 
     @FXML
-    private ImageView im2;
+    private ImageView activationstateimag;
     private Thread featureExtractionThread;
     private Thread dataCollectorThread;
-    
-     private MaskerPane masker = new MaskerPane();
-    
+
+    private MaskerPane masker = new MaskerPane();
+
     @FXML
     private AnchorPane root;
 
@@ -93,7 +93,7 @@ public class MouseDataTestingScreenController implements Initializable {
         this.start.setDisable(true);
         this.stop.setDisable(false);
         this.onoff.setText("Active");
-        this.im2.setImage(image);
+        this.activationstateimag.setImage(image);
         DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd__HH_mm_ss");
         Date date = new Date();
 
@@ -101,23 +101,12 @@ public class MouseDataTestingScreenController implements Initializable {
         Queue<ArrayList<IEvent>> events = new LinkedList<ArrayList<IEvent>>();
         FileWriter fileWriter;
 
-        //    d = new Display();
-        //    d.setVisible(true);
         try {
             fileWriter = new FileWriter("kimenet_" + ss + ".csv");
             fileWriter.append(ClassifierSettings.FILE_HEADER.toString());
             Queue<IFeature> moves = new LinkedList<IFeature>();
 
-            /*  Thread classificationThread = new Thread("Classifier") {
-                public void run() {
-                    System.out.println("run by: " + getName());
-                    IClassifier classifier = new DFLRandomForestClassifier(moves, fileWriter, d);
-                      //   classifier.setFile(fileWriter);
-                     //    classifier.setMoves(moves);
-                     //   classifier.setDisplay(d);
-                    classifier.classify();
-                }
-            };*/
+         
             this.featureExtractionThread = new Thread("Feature extractor") {
                 public void run() {
                     System.out.println("run by: " + getName());
@@ -127,11 +116,10 @@ public class MouseDataTestingScreenController implements Initializable {
                     IClassifier classifier = null;
 
                     classifier = new DFLRandomForestClassifier(moves, fileWriter, progressbar, scorrelabel, 0);
-                  
 
                     extraction.setClassifier(classifier);
-                      Platform.runLater(() -> {
-                       masker.setVisible(false);
+                    Platform.runLater(() -> {
+                        masker.setVisible(false);
 
                         Notifications.create()
                                 .title("Load finished")
@@ -140,7 +128,7 @@ public class MouseDataTestingScreenController implements Initializable {
                                 .showInformation();
                     });
                     extraction.featuresextraction();
-                    
+
                 }
             };
 
@@ -164,7 +152,6 @@ public class MouseDataTestingScreenController implements Initializable {
                     datacollector.setT(featureExtractionThread);
                     GlobalScreen.addNativeMouseListener(datacollector);
                     GlobalScreen.addNativeMouseMotionListener(datacollector);
-                    GlobalScreen.addNativeMouseWheelListener(datacollector);
                     System.out.println("run by: " + getName());
                 }
             };
@@ -181,7 +168,7 @@ public class MouseDataTestingScreenController implements Initializable {
     @FXML
     public void pressStopButton(ActionEvent event) {
         Image image = new Image("Pictures/inactivepicture.png");
-        this.im2.setImage(image);
+        this.activationstateimag.setImage(image);
         this.onoff.setText("Inactive");
         this.dataCollectorThread.stop();
         this.featureExtractionThread.stop();
@@ -193,7 +180,9 @@ public class MouseDataTestingScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         this.chart.getData().add(GlobalSettings.series);
-         this.masker.setVisible(false);
+        this.masker.setVisible(false);
+        Image image = new Image("Pictures/inactivepicture.png");
+        this.activationstateimag.setImage(image);
         this.masker.setProgress(-1);
         this.masker.setText("Loading your model");
         this.masker.setMinWidth(633);
