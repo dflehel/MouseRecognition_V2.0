@@ -26,6 +26,7 @@ import java.util.logging.Logger;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.InvalidPreferencesFormatException;
 import java.util.prefs.Preferences;
+import javafx.stage.WindowEvent;
 /**
  *
  * @author Denes
@@ -39,6 +40,10 @@ public class Starter extends Application {
         
        primaryStage.setResizable(false);
        primaryStage.setScene(scene);
+       primaryStage.setOnCloseRequest(event -> {
+    System.exit(0);
+    // Save file
+});
        primaryStage.show();
    
     }

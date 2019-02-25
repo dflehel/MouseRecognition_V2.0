@@ -5,6 +5,7 @@
  */
 package UserModelBuilder;
 
+import Settings.DataCollectorSettings;
 import Settings.UserModelBuilderSettings;
 import java.io.BufferedReader;
 import java.io.File;
@@ -25,7 +26,9 @@ import weka.classifiers.Evaluation;
 import weka.classifiers.bayes.NaiveBayes;
 import weka.classifiers.lazy.IBk;
 import weka.classifiers.trees.RandomForest;
+import weka.core.Instance;
 import weka.core.Instances;
+import weka.core.converters.ArffLoader.ArffReader;
 
 /**
  *
@@ -49,7 +52,16 @@ public class UserModelBuilder {
             Instances data = null;
             Instances positivedata = null;
             try {
-                data = new Instances(negativedatafile);
+                ArffReader arff = new ArffReader(negativedatafile);
+                System.out.println(DataCollectorSettings.numberofactions);
+                data = arff.getStructure();
+                Instance inst;
+                int row = 0;
+                while (row < DataCollectorSettings.numberofactions) {
+                    inst = arff.readInstance(data);
+                    data.add(inst);
+                    ++row;
+                }
 
             } catch (IOException ex) {
                 Logger.getLogger(UserModelBuilder.class.getName()).log(Level.SEVERE, null, ex);
@@ -80,7 +92,6 @@ public class UserModelBuilder {
             for (int i = 0; i < 2; ++i) {
                 System.out.println("AUC " + (i) + ": " + eval.areaUnderROC(i));
             }
-    
 
         } catch (Exception ex) {
             Logger.getLogger(UserModelBuilder.class.getName()).log(Level.SEVERE, null, ex);
@@ -88,7 +99,5 @@ public class UserModelBuilder {
     }
 
     public static final int NUMUSERS = 21;
-
-
 
 }

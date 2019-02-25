@@ -1,0 +1,431 @@
+@startuml
+annotation java.lang.Override
+annotation javafx.fxml.FXML
+class Main.Starter
+class ScreenContolers.MainScreenController
+class ScreenContolers.MouseDataCollertorScreenController
+class ScreenContolers.MouseDataTestingScreenController
+class ScreenContolers.MouseDataUserModelBulderScreenController
+class Settings.ClassifierSettings
+class Settings.DataCollectorSettings
+class Settings.GlobalSettings
+class Settings.UserModelBuilderSettings
+class UserModelBuilder.FeatureExtraction
+class UserModelBuilder.UserModelBuilder
+class java.awt.Panel
+class java.io.BufferedReader
+class java.io.File
+class java.io.FileInputStream
+class java.io.FileNotFoundException
+class java.io.FileOutputStream
+class java.io.FileReader
+class java.io.FileWriter
+class java.io.IOException
+class java.io.InputStream
+class java.io.ObjectInputStream
+class java.io.ObjectOutputStream
+class java.io.OutputStream
+class java.io.PrintStream
+class java.net.URL
+class java.nio.file.Files
+class java.nio.file.Paths
+class java.nio.file.StandardCopyOption
+class java.text.DateFormat
+class java.text.SimpleDateFormat
+class java.util.ArrayList
+class java.util.Arrays
+class java.util.Calendar
+class java.util.Date
+class java.util.LinkedList
+class java.util.Queue
+class java.util.Random
+class java.util.ResourceBundle
+class java.util.Scanner
+class java.util.concurrent.LinkedBlockingDeque
+class java.util.logging.Level
+class java.util.logging.Logger
+class java.util.prefs.BackingStoreException
+class java.util.prefs.InvalidPreferencesFormatException
+class java.util.prefs.Preferences
+class javafx.application.Application
+class javafx.application.Platform
+class javafx.beans.value.ChangeListener
+class javafx.beans.value.ObservableValue
+class javafx.collections.FXCollections
+class javafx.collections.ObservableList
+class javafx.event.ActionEvent
+class javafx.event.EventHandler
+class javafx.fxml.FXMLLoader
+class javafx.geometry.Pos
+class javafx.scene.Group
+class javafx.scene.Parent
+class javafx.scene.Scene
+class javafx.scene.chart.AreaChart
+class javafx.scene.chart.LineChart
+class javafx.scene.chart.XYChart
+class javafx.scene.control.Alert
+class javafx.scene.control.Alert.AlertType
+class javafx.scene.control.Button
+class javafx.scene.control.CheckBox
+class javafx.scene.control.ComboBox
+class javafx.scene.control.Label
+class javafx.scene.control.ListView
+class javafx.scene.control.ProgressBar
+class javafx.scene.control.ProgressIndicator
+class javafx.scene.control.RadioButton
+class javafx.scene.control.ToggleGroup
+class javafx.scene.control.TreeItem
+class javafx.scene.control.TreeView
+class javafx.scene.image.Image
+class javafx.scene.image.ImageView
+class javafx.scene.layout.AnchorPane
+class javafx.scene.layout.Pane
+class javafx.scene.layout.StackPane
+class javafx.scene.paint.Color
+class javafx.scene.text.Text
+class javafx.stage.FileChooser
+class javafx.stage.Stage
+class javafx.stage.StageStyle
+class javafx.stage.WindowEvent
+class mousedatacollector.MouseDataCollector
+class mouserecognition.DFLDatasetEvent
+class mouserecognition.DFLRandomForestClassifier
+class mouserecognition.DataCollector
+class mouserecognition.Extraction
+class mouserecognition.LehelFeature
+class mouserecognition.TeacherFeature
+class org.controlsfx.control.MaskerPane
+class org.controlsfx.control.Notifications
+class org.jnativehook.GlobalScreen
+class org.jnativehook.NativeHookException
+class org.jnativehook.mouse.NativeMouseEvent
+class org.jnativehook.mouse.NativeMouseWheelEvent
+class weka.classifiers.Classifier
+class weka.classifiers.Evaluation
+class weka.classifiers.UpdateableClassifier
+class weka.classifiers.bayes.NaiveBayes
+class weka.classifiers.lazy.IBk
+class weka.classifiers.trees.RandomForest
+class weka.core.Attribute
+class weka.core.DenseInstance
+class weka.core.Instance
+class weka.core.Instances
+interface java.io.Serializable
+interface javafx.fxml.Initializable
+interface mouserecognition.IClassifier
+interface mouserecognition.IEvent
+interface mouserecognition.IFeature
+interface org.jnativehook.mouse.NativeMouseInputListener
+interface org.jnativehook.mouse.NativeMouseWheelListener
+Main.Starter ..> java.lang.Override
+Main.Starter ..> ScreenContolers.MainScreenController
+Main.Starter ..> Settings.DataCollectorSettings
+Main.Starter ..> java.io.FileInputStream
+Main.Starter ..> java.io.FileNotFoundException
+Main.Starter ..> java.io.FileOutputStream
+Main.Starter ..> java.io.IOException
+Main.Starter ..> java.io.InputStream
+Main.Starter ..> java.util.logging.Level
+Main.Starter ..> java.util.logging.Logger
+Main.Starter ..> java.util.prefs.BackingStoreException
+Main.Starter ..> java.util.prefs.InvalidPreferencesFormatException
+Main.Starter ..> java.util.prefs.Preferences
+Main.Starter --|> javafx.application.Application
+Main.Starter ..> javafx.event.ActionEvent
+Main.Starter ..> javafx.event.EventHandler
+Main.Starter ..> javafx.fxml.FXMLLoader
+Main.Starter ..> javafx.scene.Parent
+Main.Starter ..> javafx.scene.Scene
+Main.Starter ..> javafx.scene.control.Button
+Main.Starter ..> javafx.scene.layout.StackPane
+Main.Starter ..> javafx.stage.Stage
+Main.Starter ..> javafx.stage.WindowEvent
+ScreenContolers.MainScreenController ..> java.lang.Override
+ScreenContolers.MainScreenController ..> javafx.fxml.FXML
+ScreenContolers.MainScreenController ..> Settings.DataCollectorSettings
+ScreenContolers.MainScreenController ..> Settings.GlobalSettings
+ScreenContolers.MainScreenController ..> java.awt.Panel
+ScreenContolers.MainScreenController ..> java.net.URL
+ScreenContolers.MainScreenController ..> java.util.ResourceBundle
+ScreenContolers.MainScreenController ..> javafx.beans.value.ChangeListener
+ScreenContolers.MainScreenController ..> javafx.beans.value.ObservableValue
+ScreenContolers.MainScreenController ..> javafx.event.ActionEvent
+ScreenContolers.MainScreenController ..> javafx.event.EventHandler
+ScreenContolers.MainScreenController ..> javafx.fxml.FXMLLoader
+ScreenContolers.MainScreenController ..> javafx.scene.Parent
+ScreenContolers.MainScreenController ..> javafx.scene.control.Button
+ScreenContolers.MainScreenController ..> javafx.scene.control.ProgressBar
+ScreenContolers.MainScreenController ..> javafx.scene.control.TreeItem
+ScreenContolers.MainScreenController ..> javafx.scene.control.TreeView
+ScreenContolers.MainScreenController ..> javafx.scene.layout.AnchorPane
+ScreenContolers.MainScreenController ..> javafx.scene.layout.Pane
+ScreenContolers.MainScreenController --|> javafx.fxml.Initializable
+ScreenContolers.MouseDataCollertorScreenController ..> java.lang.Override
+ScreenContolers.MouseDataCollertorScreenController ..> javafx.fxml.FXML
+ScreenContolers.MouseDataCollertorScreenController ..> Settings.DataCollectorSettings
+ScreenContolers.MouseDataCollertorScreenController ..> java.io.File
+ScreenContolers.MouseDataCollertorScreenController ..> java.io.FileWriter
+ScreenContolers.MouseDataCollertorScreenController ..> java.io.IOException
+ScreenContolers.MouseDataCollertorScreenController ..> java.net.URL
+ScreenContolers.MouseDataCollertorScreenController ..> java.text.DateFormat
+ScreenContolers.MouseDataCollertorScreenController ..> java.text.SimpleDateFormat
+ScreenContolers.MouseDataCollertorScreenController ..> java.util.Date
+ScreenContolers.MouseDataCollertorScreenController ..> java.util.ResourceBundle
+ScreenContolers.MouseDataCollertorScreenController ..> java.util.logging.Level
+ScreenContolers.MouseDataCollertorScreenController ..> java.util.logging.Logger
+ScreenContolers.MouseDataCollertorScreenController ..> javafx.application.Platform
+ScreenContolers.MouseDataCollertorScreenController ..> javafx.event.ActionEvent
+ScreenContolers.MouseDataCollertorScreenController ..> javafx.fxml.FXMLLoader
+ScreenContolers.MouseDataCollertorScreenController ..> javafx.scene.control.Button
+ScreenContolers.MouseDataCollertorScreenController ..> javafx.scene.control.Label
+ScreenContolers.MouseDataCollertorScreenController ..> javafx.scene.control.ListView
+ScreenContolers.MouseDataCollertorScreenController ..> javafx.scene.image.Image
+ScreenContolers.MouseDataCollertorScreenController ..> javafx.scene.image.ImageView
+ScreenContolers.MouseDataCollertorScreenController ..> javafx.scene.layout.Pane
+ScreenContolers.MouseDataCollertorScreenController ..> mousedatacollector.MouseDataCollector
+ScreenContolers.MouseDataCollertorScreenController ..> org.jnativehook.GlobalScreen
+ScreenContolers.MouseDataCollertorScreenController ..> org.jnativehook.NativeHookException
+ScreenContolers.MouseDataCollertorScreenController --|> javafx.fxml.Initializable
+ScreenContolers.MouseDataTestingScreenController ..> java.lang.Override
+ScreenContolers.MouseDataTestingScreenController ..> javafx.fxml.FXML
+ScreenContolers.MouseDataTestingScreenController ..> Settings.ClassifierSettings
+ScreenContolers.MouseDataTestingScreenController ..> Settings.GlobalSettings
+ScreenContolers.MouseDataTestingScreenController ..> java.io.FileWriter
+ScreenContolers.MouseDataTestingScreenController ..> java.io.IOException
+ScreenContolers.MouseDataTestingScreenController ..> java.net.URL
+ScreenContolers.MouseDataTestingScreenController ..> java.text.DateFormat
+ScreenContolers.MouseDataTestingScreenController ..> java.text.SimpleDateFormat
+ScreenContolers.MouseDataTestingScreenController ..> java.util.ArrayList
+ScreenContolers.MouseDataTestingScreenController ..> java.util.Date
+ScreenContolers.MouseDataTestingScreenController ..> java.util.LinkedList
+ScreenContolers.MouseDataTestingScreenController ..> java.util.Queue
+ScreenContolers.MouseDataTestingScreenController ..> java.util.ResourceBundle
+ScreenContolers.MouseDataTestingScreenController ..> java.util.logging.Level
+ScreenContolers.MouseDataTestingScreenController ..> java.util.logging.Logger
+ScreenContolers.MouseDataTestingScreenController ..> javafx.application.Platform
+ScreenContolers.MouseDataTestingScreenController ..> javafx.event.ActionEvent
+ScreenContolers.MouseDataTestingScreenController ..> javafx.geometry.Pos
+ScreenContolers.MouseDataTestingScreenController ..> javafx.scene.chart.LineChart
+ScreenContolers.MouseDataTestingScreenController ..> javafx.scene.control.Button
+ScreenContolers.MouseDataTestingScreenController ..> javafx.scene.control.Label
+ScreenContolers.MouseDataTestingScreenController ..> javafx.scene.control.ListView
+ScreenContolers.MouseDataTestingScreenController ..> javafx.scene.control.ProgressBar
+ScreenContolers.MouseDataTestingScreenController ..> javafx.scene.control.RadioButton
+ScreenContolers.MouseDataTestingScreenController ..> javafx.scene.control.ToggleGroup
+ScreenContolers.MouseDataTestingScreenController ..> javafx.scene.image.Image
+ScreenContolers.MouseDataTestingScreenController ..> javafx.scene.image.ImageView
+ScreenContolers.MouseDataTestingScreenController ..> javafx.scene.layout.AnchorPane
+ScreenContolers.MouseDataTestingScreenController ..> mousedatacollector.MouseDataCollector
+ScreenContolers.MouseDataTestingScreenController ..> mouserecognition.DFLRandomForestClassifier
+ScreenContolers.MouseDataTestingScreenController ..> mouserecognition.DataCollector
+ScreenContolers.MouseDataTestingScreenController ..> mouserecognition.Extraction
+ScreenContolers.MouseDataTestingScreenController ..> org.controlsfx.control.MaskerPane
+ScreenContolers.MouseDataTestingScreenController ..> org.controlsfx.control.Notifications
+ScreenContolers.MouseDataTestingScreenController ..> org.jnativehook.GlobalScreen
+ScreenContolers.MouseDataTestingScreenController ..> org.jnativehook.NativeHookException
+ScreenContolers.MouseDataTestingScreenController --|> javafx.fxml.Initializable
+ScreenContolers.MouseDataTestingScreenController ..> mouserecognition.IClassifier
+ScreenContolers.MouseDataTestingScreenController ..> mouserecognition.IEvent
+ScreenContolers.MouseDataTestingScreenController ..> mouserecognition.IFeature
+ScreenContolers.MouseDataUserModelBulderScreenController ..> java.lang.Override
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.fxml.FXML
+ScreenContolers.MouseDataUserModelBulderScreenController ..> Settings.UserModelBuilderSettings
+ScreenContolers.MouseDataUserModelBulderScreenController ..> UserModelBuilder.UserModelBuilder
+ScreenContolers.MouseDataUserModelBulderScreenController ..> java.io.File
+ScreenContolers.MouseDataUserModelBulderScreenController ..> java.net.URL
+ScreenContolers.MouseDataUserModelBulderScreenController ..> java.util.ResourceBundle
+ScreenContolers.MouseDataUserModelBulderScreenController ..> java.util.logging.Level
+ScreenContolers.MouseDataUserModelBulderScreenController ..> java.util.logging.Logger
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.application.Platform
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.beans.value.ChangeListener
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.beans.value.ObservableValue
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.collections.FXCollections
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.collections.ObservableList
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.event.ActionEvent
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.geometry.Pos
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.scene.Group
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.scene.Scene
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.scene.control.Alert
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.scene.control.Alert.AlertType
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.scene.control.Button
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.scene.control.CheckBox
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.scene.control.ComboBox
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.scene.control.Label
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.scene.control.ProgressIndicator
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.scene.control.RadioButton
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.scene.control.ToggleGroup
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.scene.image.Image
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.scene.layout.AnchorPane
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.scene.text.Text
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.stage.FileChooser
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.stage.Stage
+ScreenContolers.MouseDataUserModelBulderScreenController ..> javafx.stage.StageStyle
+ScreenContolers.MouseDataUserModelBulderScreenController ..> mouserecognition.DFLRandomForestClassifier
+ScreenContolers.MouseDataUserModelBulderScreenController ..> mouserecognition.Extraction
+ScreenContolers.MouseDataUserModelBulderScreenController ..> org.controlsfx.control.MaskerPane
+ScreenContolers.MouseDataUserModelBulderScreenController ..> org.controlsfx.control.Notifications
+ScreenContolers.MouseDataUserModelBulderScreenController --|> javafx.fxml.Initializable
+ScreenContolers.MouseDataUserModelBulderScreenController ..> mouserecognition.IClassifier
+Settings.ClassifierSettings ..> javafx.scene.control.ProgressBar
+Settings.DataCollectorSettings ..> Main.Starter
+Settings.DataCollectorSettings ..> java.io.File
+Settings.DataCollectorSettings ..> java.io.FileInputStream
+Settings.DataCollectorSettings ..> java.io.FileNotFoundException
+Settings.DataCollectorSettings ..> java.io.FileOutputStream
+Settings.DataCollectorSettings ..> java.io.ObjectInputStream
+Settings.DataCollectorSettings ..> java.io.ObjectOutputStream
+Settings.DataCollectorSettings ..> java.io.OutputStream
+Settings.DataCollectorSettings ..> java.util.logging.Level
+Settings.DataCollectorSettings ..> java.util.logging.Logger
+Settings.DataCollectorSettings ..> java.util.prefs.BackingStoreException
+Settings.DataCollectorSettings ..> java.util.prefs.Preferences
+Settings.DataCollectorSettings --|> java.io.Serializable
+Settings.GlobalSettings ..> java.util.ArrayList
+Settings.GlobalSettings ..> javafx.scene.chart.LineChart
+Settings.GlobalSettings ..> javafx.scene.chart.XYChart
+UserModelBuilder.FeatureExtraction ..> Settings.ClassifierSettings
+UserModelBuilder.FeatureExtraction ..> Settings.UserModelBuilderSettings
+UserModelBuilder.FeatureExtraction ..> java.io.File
+UserModelBuilder.FeatureExtraction ..> java.io.FileNotFoundException
+UserModelBuilder.FeatureExtraction ..> java.io.IOException
+UserModelBuilder.FeatureExtraction ..> java.nio.file.Files
+UserModelBuilder.FeatureExtraction ..> java.nio.file.Paths
+UserModelBuilder.FeatureExtraction ..> java.nio.file.StandardCopyOption
+UserModelBuilder.FeatureExtraction ..> java.util.ArrayList
+UserModelBuilder.FeatureExtraction ..> java.util.Scanner
+UserModelBuilder.FeatureExtraction ..> java.util.logging.Level
+UserModelBuilder.FeatureExtraction ..> java.util.logging.Logger
+UserModelBuilder.FeatureExtraction ..> mouserecognition.DFLDatasetEvent
+UserModelBuilder.FeatureExtraction ..> mouserecognition.LehelFeature
+UserModelBuilder.FeatureExtraction ..> mouserecognition.TeacherFeature
+UserModelBuilder.FeatureExtraction ..> weka.classifiers.trees.RandomForest
+UserModelBuilder.FeatureExtraction ..> weka.core.Instance
+UserModelBuilder.FeatureExtraction ..> weka.core.Instances
+UserModelBuilder.FeatureExtraction ..> mouserecognition.IEvent
+UserModelBuilder.FeatureExtraction ..> mouserecognition.IFeature
+UserModelBuilder.UserModelBuilder ..> Settings.UserModelBuilderSettings
+UserModelBuilder.UserModelBuilder ..> java.io.BufferedReader
+UserModelBuilder.UserModelBuilder ..> java.io.File
+UserModelBuilder.UserModelBuilder ..> java.io.FileNotFoundException
+UserModelBuilder.UserModelBuilder ..> java.io.FileOutputStream
+UserModelBuilder.UserModelBuilder ..> java.io.FileReader
+UserModelBuilder.UserModelBuilder ..> java.io.IOException
+UserModelBuilder.UserModelBuilder ..> java.io.ObjectOutputStream
+UserModelBuilder.UserModelBuilder ..> java.util.Random
+UserModelBuilder.UserModelBuilder ..> java.util.logging.Level
+UserModelBuilder.UserModelBuilder ..> java.util.logging.Logger
+UserModelBuilder.UserModelBuilder ..> javafx.scene.control.Alert
+UserModelBuilder.UserModelBuilder ..> javafx.scene.control.Alert.AlertType
+UserModelBuilder.UserModelBuilder ..> javafx.scene.control.Label
+UserModelBuilder.UserModelBuilder ..> javafx.scene.control.ProgressIndicator
+UserModelBuilder.UserModelBuilder ..> weka.classifiers.Classifier
+UserModelBuilder.UserModelBuilder ..> weka.classifiers.Evaluation
+UserModelBuilder.UserModelBuilder ..> weka.classifiers.bayes.NaiveBayes
+UserModelBuilder.UserModelBuilder ..> weka.classifiers.lazy.IBk
+UserModelBuilder.UserModelBuilder ..> weka.classifiers.trees.RandomForest
+UserModelBuilder.UserModelBuilder ..> weka.core.Instances
+mousedatacollector.MouseDataCollector ..> java.lang.Override
+mousedatacollector.MouseDataCollector ..> Settings.ClassifierSettings
+mousedatacollector.MouseDataCollector ..> Settings.DataCollectorSettings
+mousedatacollector.MouseDataCollector ..> Settings.GlobalSettings
+mousedatacollector.MouseDataCollector ..> java.io.FileWriter
+mousedatacollector.MouseDataCollector ..> java.io.IOException
+mousedatacollector.MouseDataCollector ..> java.text.DateFormat
+mousedatacollector.MouseDataCollector ..> java.text.SimpleDateFormat
+mousedatacollector.MouseDataCollector ..> java.util.ArrayList
+mousedatacollector.MouseDataCollector ..> java.util.Date
+mousedatacollector.MouseDataCollector ..> java.util.logging.Level
+mousedatacollector.MouseDataCollector ..> java.util.logging.Logger
+mousedatacollector.MouseDataCollector ..> javafx.application.Platform
+mousedatacollector.MouseDataCollector ..> javafx.scene.chart.XYChart
+mousedatacollector.MouseDataCollector ..> javafx.scene.control.Label
+mousedatacollector.MouseDataCollector ..> mouserecognition.DFLDatasetEvent
+mousedatacollector.MouseDataCollector ..> org.jnativehook.GlobalScreen
+mousedatacollector.MouseDataCollector ..> org.jnativehook.NativeHookException
+mousedatacollector.MouseDataCollector ..> org.jnativehook.mouse.NativeMouseEvent
+mousedatacollector.MouseDataCollector ..> org.jnativehook.mouse.NativeMouseWheelEvent
+mousedatacollector.MouseDataCollector ..> mouserecognition.IEvent
+mousedatacollector.MouseDataCollector --|> org.jnativehook.mouse.NativeMouseInputListener
+mousedatacollector.MouseDataCollector --|> org.jnativehook.mouse.NativeMouseWheelListener
+mouserecognition.DFLDatasetEvent --|> mouserecognition.IEvent
+mouserecognition.DFLRandomForestClassifier ..> java.lang.Override
+mouserecognition.DFLRandomForestClassifier ..> Settings.ClassifierSettings
+mouserecognition.DFLRandomForestClassifier ..> Settings.GlobalSettings
+mouserecognition.DFLRandomForestClassifier ..> java.io.BufferedReader
+mouserecognition.DFLRandomForestClassifier ..> java.io.FileInputStream
+mouserecognition.DFLRandomForestClassifier ..> java.io.FileNotFoundException
+mouserecognition.DFLRandomForestClassifier ..> java.io.FileReader
+mouserecognition.DFLRandomForestClassifier ..> java.io.FileWriter
+mouserecognition.DFLRandomForestClassifier ..> java.io.IOException
+mouserecognition.DFLRandomForestClassifier ..> java.io.ObjectInputStream
+mouserecognition.DFLRandomForestClassifier ..> java.util.ArrayList
+mouserecognition.DFLRandomForestClassifier ..> java.util.Calendar
+mouserecognition.DFLRandomForestClassifier ..> java.util.LinkedList
+mouserecognition.DFLRandomForestClassifier ..> java.util.Queue
+mouserecognition.DFLRandomForestClassifier ..> java.util.concurrent.LinkedBlockingDeque
+mouserecognition.DFLRandomForestClassifier ..> java.util.logging.Level
+mouserecognition.DFLRandomForestClassifier ..> java.util.logging.Logger
+mouserecognition.DFLRandomForestClassifier ..> javafx.application.Platform
+mouserecognition.DFLRandomForestClassifier ..> javafx.scene.chart.AreaChart
+mouserecognition.DFLRandomForestClassifier ..> javafx.scene.chart.XYChart
+mouserecognition.DFLRandomForestClassifier ..> javafx.scene.control.Label
+mouserecognition.DFLRandomForestClassifier ..> javafx.scene.control.ListView
+mouserecognition.DFLRandomForestClassifier ..> javafx.scene.control.ProgressBar
+mouserecognition.DFLRandomForestClassifier ..> javafx.scene.paint.Color
+mouserecognition.DFLRandomForestClassifier ..> weka.classifiers.UpdateableClassifier
+mouserecognition.DFLRandomForestClassifier ..> weka.classifiers.trees.RandomForest
+mouserecognition.DFLRandomForestClassifier ..> weka.core.Attribute
+mouserecognition.DFLRandomForestClassifier ..> weka.core.Instance
+mouserecognition.DFLRandomForestClassifier ..> weka.core.Instances
+mouserecognition.DFLRandomForestClassifier --|> mouserecognition.IClassifier
+mouserecognition.DataCollector ..> java.lang.Override
+mouserecognition.DataCollector ..> Settings.ClassifierSettings
+mouserecognition.DataCollector ..> java.io.FileWriter
+mouserecognition.DataCollector ..> java.io.IOException
+mouserecognition.DataCollector ..> java.text.DateFormat
+mouserecognition.DataCollector ..> java.text.SimpleDateFormat
+mouserecognition.DataCollector ..> java.util.ArrayList
+mouserecognition.DataCollector ..> java.util.Date
+mouserecognition.DataCollector ..> java.util.LinkedList
+mouserecognition.DataCollector ..> java.util.Queue
+mouserecognition.DataCollector ..> java.util.logging.Level
+mouserecognition.DataCollector ..> java.util.logging.Logger
+mouserecognition.DataCollector ..> org.jnativehook.GlobalScreen
+mouserecognition.DataCollector ..> org.jnativehook.NativeHookException
+mouserecognition.DataCollector ..> org.jnativehook.mouse.NativeMouseEvent
+mouserecognition.DataCollector ..> org.jnativehook.mouse.NativeMouseWheelEvent
+mouserecognition.DataCollector --|> org.jnativehook.mouse.NativeMouseInputListener
+mouserecognition.DataCollector --|> org.jnativehook.mouse.NativeMouseWheelListener
+mouserecognition.Extraction ..> Settings.ClassifierSettings
+mouserecognition.Extraction ..> java.util.ArrayList
+mouserecognition.Extraction ..> java.util.LinkedList
+mouserecognition.Extraction ..> java.util.Queue
+mouserecognition.Extraction ..> java.util.logging.Level
+mouserecognition.Extraction ..> java.util.logging.Logger
+mouserecognition.LehelFeature ..> java.lang.Override
+mouserecognition.LehelFeature ..> Settings.ClassifierSettings
+mouserecognition.LehelFeature ..> java.util.ArrayList
+mouserecognition.LehelFeature ..> java.util.Arrays
+mouserecognition.LehelFeature ..> weka.core.Attribute
+mouserecognition.LehelFeature ..> weka.core.DenseInstance
+mouserecognition.LehelFeature ..> weka.core.Instance
+mouserecognition.LehelFeature ..> weka.core.Instances
+mouserecognition.LehelFeature --|> mouserecognition.IFeature
+mouserecognition.TeacherFeature ..> java.lang.Override
+mouserecognition.TeacherFeature ..> Settings.ClassifierSettings
+mouserecognition.TeacherFeature ..> java.io.File
+mouserecognition.TeacherFeature ..> java.io.FileInputStream
+mouserecognition.TeacherFeature ..> java.io.FileNotFoundException
+mouserecognition.TeacherFeature ..> java.io.PrintStream
+mouserecognition.TeacherFeature ..> java.util.ArrayList
+mouserecognition.TeacherFeature ..> java.util.Arrays
+mouserecognition.TeacherFeature ..> java.util.Scanner
+mouserecognition.TeacherFeature ..> java.util.logging.Level
+mouserecognition.TeacherFeature ..> java.util.logging.Logger
+mouserecognition.TeacherFeature ..> weka.core.DenseInstance
+mouserecognition.TeacherFeature ..> weka.core.Instance
+mouserecognition.TeacherFeature --|> mouserecognition.IFeature
+mouserecognition.IClassifier ..> java.util.Queue
+mouserecognition.IFeature ..> java.util.ArrayList
+mouserecognition.IFeature ..> weka.core.Instance
+@enduml
