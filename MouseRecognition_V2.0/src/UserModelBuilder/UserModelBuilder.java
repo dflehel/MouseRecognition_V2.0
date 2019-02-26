@@ -56,13 +56,19 @@ public class UserModelBuilder {
                 System.out.println(DataCollectorSettings.numberofactions);
                 data = arff.getStructure();
                 Instance inst;
-                int row = 0;
-                while (row < DataCollectorSettings.numberofactions) {
+                int row = 1;
+                /*while (row < DataCollectorSettings.numberofactions) {
                     inst = arff.readInstance(data);
+                    System.out.println(row);
+                    if(inst != null){
                     data.add(inst);
                     ++row;
+                    }
+                }*/
+                for(int i = 0 ; i<DataCollectorSettings.numberofactions;++i){
+                    data.add(arff.getData().get(i));
                 }
-
+                System.out.println(data);
             } catch (IOException ex) {
                 Logger.getLogger(UserModelBuilder.class.getName()).log(Level.SEVERE, null, ex);
             }
