@@ -5,6 +5,7 @@
  */
 package UserModelBuilder;
 
+import ErrorRepair.ErrorRepair;
 import Settings.DataCollectorSettings;
 import Settings.UserModelBuilderSettings;
 import java.io.BufferedReader;
@@ -78,7 +79,9 @@ public class UserModelBuilder {
             extracion.makedataforcreation();
             data.setClassIndex(data.numAttributes() - 1);
             RandomForest classifier = new RandomForest();
-
+            ErrorRepair repair = new ErrorRepair(data);
+            System.out.println("n\n\n\n");
+            data =  repair.repairerror();
             classifier.buildClassifier(data);
             // classifier.buildClassifier(positivedata);
 
