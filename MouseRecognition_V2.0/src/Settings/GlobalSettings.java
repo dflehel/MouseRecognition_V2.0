@@ -21,5 +21,5 @@ public class GlobalSettings {
     public static boolean updating = false;
     public static XYChart.Series<String, Number> series = new XYChart.Series<>();
     public static boolean updatingsignature = false;
-    public static XYChart.Series<String, Number> seriessignature = new XYChart.Series<>();
+    public static XYChart.Series<String, Number> seriesoffline = new XYChart.Series<>();
 }

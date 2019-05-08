@@ -115,7 +115,7 @@ public class MouseDataTestingScreenController implements Initializable {
                     extraction.setMoves(moves);
                     IClassifier classifier = null;
 
-                    classifier = new DFLRandomForestClassifier(moves, fileWriter, progressbar, scorrelabel, 0);
+                    classifier = new DFLRandomForestClassifier(moves, fileWriter, progressbar, scorrelabel, 1);
 
                     extraction.setClassifier(classifier);
                     Platform.runLater(() -> {

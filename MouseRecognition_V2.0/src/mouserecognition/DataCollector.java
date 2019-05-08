@@ -131,7 +131,7 @@ public class DataCollector implements NativeMouseInputListener, NativeMouseWheel
         event.setActiontype("Moved");
         //***
         if (this.eventlist.size() > ClassifierSettings.NUM_EVENTS) {
-            if (this.eventlist.get(this.eventlist.size() - 1).getTime() - event.getTime() > ClassifierSettings.TIME_THRESHOLD) {
+            if (this.eventlist.get(this.eventlist.size() - 1).getTime()- event.getTime()  > ClassifierSettings.TIME_THRESHOLD) {
                 if (this.mouseActions.isEmpty()) {
                     this.mouseActions.add(this.eventlist);
                     synchronized (this.mouseActions) {

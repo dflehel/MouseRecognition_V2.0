@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;?import java.lang.*?&gt;&lt;?import javafx.scene.chart.*?&gt;&lt;LineChart fx:id=&quot;chart&quot; alternativeRowFillVisible=&quot;false&quot; createSymbols=&quot;false&quot; layoutX=&quot;4.0&quot; layoutY=&quot;149.0&quot; legendVisible=&quot;false&quot; prefHeight=&quot;246.0&quot; prefWidth=&quot;629.0&quot; style=&quot;-fx-border-width: 3; -fx-border-color: #000000; -fx-background-color: #FFFFFF; -fx-background-radius: 31; -fx-border-radius: 30;&quot; title=&quot;Recognition accuracy&quot; xmlns=&quot;http://javafx.com/javafx/8&quot; xmlns:fx=&quot;http://javafx.com/fxml/1&quot;&gt;   &lt;xAxis&gt;      &lt;CategoryAxis label=&quot;Number of actions&quot; side=&quot;BOTTOM&quot; style=&quot;-fx-background-color: #ffffff;&quot; tickLength=&quot;1.0&quot; tickMarkVisible=&quot;false&quot; /&gt;   &lt;/xAxis&gt;   &lt;yAxis&gt;      &lt;NumberAxis label=&quot;Probability&quot; prefHeight=&quot;173.0&quot; prefWidth=&quot;37.0&quot; side=&quot;LEFT&quot; style=&quot;-fx-background-color: #ffffff; -fx-padding: 30;&quot; tickLength=&quot;1.0&quot; /&gt;   &lt;/yAxis&gt;&lt;/LineChart&gt;" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="395.0" prefWidth="633.0" style="-fx-background-color: #EA0000; -fx-border-color: #FFFFFF; -fx-border-width: 3; -fx-border-radius: 5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScreenContolers.MouseDataOfflineTestingController">
+   <children>
+      <LineChart fx:id="chart" alternativeRowFillVisible="false" createSymbols="false" layoutX="8.0" layoutY="157.0" legendVisible="false" prefHeight="232.0" prefWidth="617.0" style="-fx-border-width: 3; -fx-border-color: #000000; -fx-background-color: #FFFFFF; -fx-background-radius: 31; -fx-border-radius: 30;" title="Recognition accuracy" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="158.0">
+         <xAxis>
+            <CategoryAxis label="Number of actions" side="BOTTOM" style="-fx-background-color: #ffffff;" tickLength="1.0" tickMarkVisible="false" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis autoRanging="false" label="Probability" prefHeight="173.0" prefWidth="37.0" side="LEFT" style="-fx-background-color: #ffffff; -fx-padding: 30;" tickLength="1.0" />
+         </yAxis>
+      </LineChart>
+      <Button fx:id="start" layoutX="34.0" layoutY="34.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressStartButton" prefHeight="65.0" prefWidth="65.0" style="-fx-background-color: #00ff00; -fx-background-radius: 32; -fx-border-color: #000000; -fx-border-image-width: 2; -fx-border-radius: 32;" AnchorPane.bottomAnchor="317.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="555.0" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font size="11.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="64.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Pictures/playicon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <ImageView fx:id="activationstateimag" fitHeight="25.0" fitWidth="25.0" layoutX="273.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="stop" layoutX="574.0" layoutY="43.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressClrear" prefHeight="65.0" prefWidth="65.0" style="-fx-background-color: #ff0000; -fx-background-radius: 32; -fx-border-width: 2; -fx-border-color: #ffffff; -fx-border-radius: 32;" textFill="WHITE" AnchorPane.bottomAnchor="317.0" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font size="11.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="54.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Pictures/20e95cbb9e.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="14.0" layoutY="75.0" prefHeight="25.0" prefWidth="60.0" text="START" textFill="WHITE" AnchorPane.bottomAnchor="287.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="556.0" AnchorPane.topAnchor="75.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="550.0" layoutY="84.0" prefHeight="36.0" prefWidth="75.0" text="CLEAN" textFill="WHITE" AnchorPane.bottomAnchor="281.0" AnchorPane.leftAnchor="550.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="84.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="198.0" layoutY="67.0" text="Number of actions" textFill="#ebe7e7">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="number" layoutX="322.0" layoutY="65.0" promptText="1" />
+   </children>
+</AnchorPane>

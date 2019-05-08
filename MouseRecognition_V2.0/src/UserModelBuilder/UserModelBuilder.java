@@ -101,7 +101,8 @@ public class UserModelBuilder {
             for (int i = 0; i < 2; ++i) {
                 System.out.println("AUC " + (i) + ": " + eval.areaUnderROC(i));
             }
-
+            DataCollectorSettings.numberofactions = 0;
+            DataCollectorSettings.savedata();
         } catch (Exception ex) {
             Logger.getLogger(UserModelBuilder.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -356,4 +356,102 @@ public class DFLRandomForestClassifier implements IClassifier {
         }
     }
 
+    @Override
+    public void classifyonemovment(IFeature move) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void classify(Queue<IFeature> moves, int numactions) {
+         double movesProbs[] = new double[2];
+         this.moves = moves;
+         int SIZE = this.moves.size();
+         XYChart.Series<String, Number> seriesoffline = new XYChart.Series<>();
+         Queue<Double> probss = new LinkedList<>();
+         for (IFeature f : this.moves) {
+            Instance instance = f.getInstance();
+            instance.setDataset(this.instances);
+            this.instances.add(instance);
+            System.out.println(f.toString());
+            //  TeacherFeature tf = (TeacherFeature) f;
+
+            //  printEventData(tf);
+            try {
+                double[] probs = this.randomforest.distributionForInstance(instance);
+                movesProbs[1] += probs[1];
+                if (GlobalSettings.updating) {
+
+                    this.randomforest.buildClassifier(this.instances);
+                    this.instances.delete();
+                }
+                System.out.println((counter) + ". Time: " + Calendar.getInstance().getTime() + "\tProbability: " + probs[1]);
+                    ++counter; 
+                    probss.add(probs[1]);
+                  
+                    
+                    if (counter >= numactions){
+                    double avg = 0;
+                    for (Double d:probss){
+                        avg+=d;
+                    }
+                    avg = (avg/numactions)*100;
+                    seriesoffline.getData().add(new XYChart.Data<>(counter+"", avg));
+                    probss.poll();
+                    }
+                  
+          
+            } catch (Exception ex) {
+                Logger.getLogger(DFLRandomForestClassifier.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+               Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    // if you change the UI, do it here !
+                  
+                   
+                  
+              
+                    GlobalSettings.seriesoffline.setData(seriesoffline.getData());
+                }
+            });
+    /*    TeacherFeature tf = null;
+        if (ClassifierSettings.WHICH_FEATURES == 1) {
+            tf = (TeacherFeature) this.moves.element();
+        }
+
+        try {
+            double res = (movesProbs[1] / SIZE);
+            if (probabilities.size() < numactions ) {
+                probabilities.add(res);
+            } else {
+                probabilities.poll();
+                probabilities.add(res);
+            }
+            double mean = computeMean(probabilities);
+       
+            Integer i = new Integer((int) (mean * 100));
+            //this.display.setscore((counter) + ". Time: " + Calendar.getInstance().getTime() + "\tProbability: " + String.format("%.4f", mean), i)
+
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    // if you change the UI, do it here !
+                  
+                   
+                  
+              
+                    GlobalSettings.seriesoffline.getData().add(new XYChart.Data<>(counter + "", i));
+                }
+            });
+           
+        } catch (Exception ex) {
+            Logger.getLogger(DFLRandomForestClassifier.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+
+        ++counter;
+        this.toclassify.clear();
+    }
+    
+
 }

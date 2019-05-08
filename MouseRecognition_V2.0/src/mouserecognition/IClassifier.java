@@ -16,5 +16,11 @@ public interface IClassifier {
     public void classify();
 
     public void classify(Queue<IFeature> moves);
+    
+    public void classify(Queue<IFeature> moves,int numactions);
+    
+    public void classifyonemovment(IFeature move);
+    
+    
 
 }

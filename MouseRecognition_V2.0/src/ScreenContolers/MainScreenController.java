@@ -51,6 +51,9 @@ public class MainScreenController implements Initializable {
 
     @FXML
     private Button testmodel;
+    
+    @FXML
+    private Button offlinetest;
 
     /**
      * Initializes the controller class.
@@ -75,6 +78,12 @@ public class MainScreenController implements Initializable {
             @Override
             public void handle(ActionEvent e) {
                 startMouseTest();
+            }
+        });
+        this.offlinetest.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                startOfflineTesting();
             }
         });
     }
@@ -166,6 +175,23 @@ public class MainScreenController implements Initializable {
             if (firsttime == true) {
                 this.mainpanel.getChildren().addAll(anchorpane);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void startOfflineTesting(){
+        try {
+            System.out.println("1");
+            Pane anchorpane = FXMLLoader.load(getClass().getResource("/Screen/MouseDataOfflineTesting.fxml"));
+            System.out.println("2");
+  
+
+          
+      
+                this.mainpanel.getChildren().addAll(anchorpane);
+            
+            System.out.println("3");
         } catch (Exception e) {
             e.printStackTrace();
         }
