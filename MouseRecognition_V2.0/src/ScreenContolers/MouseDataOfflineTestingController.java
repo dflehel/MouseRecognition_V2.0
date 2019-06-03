@@ -81,7 +81,12 @@ public class MouseDataOfflineTestingController implements Initializable {
              IClassifier classifier = null;
              System.out.println("safds");
                     classifier = new DFLRandomForestClassifier(null, null, null, null, 1);
+                    if (number.getText().length() ==0){
+                        classifier.classify(testing.getMoves(), 1);
+                    }
+                    else{
              classifier.classify(testing.getMoves(), Integer.parseInt(number.getText()));
+                    }
                System.out.println("safds");
         }
          

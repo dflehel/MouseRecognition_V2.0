@@ -21,7 +21,7 @@
             <CategoryAxis label="Number of actions" side="BOTTOM" style="-fx-background-color: #ffffff;" tickLength="1.0" tickMarkVisible="false" />
          </xAxis>
          <yAxis>
-            <NumberAxis label="Probability" prefHeight="173.0" prefWidth="37.0" side="LEFT" style="-fx-background-color: #ffffff; -fx-padding: 30;" tickLength="1.0" />
+            <NumberAxis autoRanging="false" label="Probability" prefHeight="173.0" prefWidth="37.0" side="LEFT" style="-fx-background-color: #ffffff; -fx-padding: 30;" tickLength="1.0" />
          </yAxis>
       </LineChart>
       <Button fx:id="start" layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressStartButton" prefHeight="65.0" prefWidth="65.0" style="-fx-background-color: #00ff00; -fx-background-radius: 32; -fx-border-color: #000000; -fx-border-image-width: 2; -fx-border-radius: 32;" AnchorPane.bottomAnchor="323.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="561.0" AnchorPane.topAnchor="5.0">
